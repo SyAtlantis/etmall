@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: db, core, api-admin, api-user
+  messages:
+    encoding: UTF-8
+
+server:
+  port: 9080
+
+#logging:
+#  config: classpath:logback-spring.xml
