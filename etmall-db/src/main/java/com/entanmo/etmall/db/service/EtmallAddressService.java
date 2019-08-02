@@ -37,4 +37,8 @@ public class EtmallAddressService {
     public int update(EtmallAddress address) {
         return 0;
     }
+
+    public List<EtmallAddress> querySelective(Integer userId, String name, Integer page, Integer limit, String sort, String order) {
+        return null;
+    }
 }
