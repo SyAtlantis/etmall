@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * 收货地址服务
+ * 收货地址
  */
 @RestController
 @RequestMapping("/user/address")

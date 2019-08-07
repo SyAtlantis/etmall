@@ -2,6 +2,7 @@ package com.entanmo.etmall.db.service;
 
 import com.entanmo.etmall.db.dao.EtmallCategoryMapper;
 import com.entanmo.etmall.db.domain.EtmallCategory;
+import com.entanmo.etmall.db.domain.EtmallCategory.Column;
 import com.entanmo.etmall.db.domain.EtmallCategoryExample;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,11 @@ import java.util.List;
 
 @Service
 public class EtmallCategoryService {
+
     @Resource
     private EtmallCategoryMapper categoryMapper;
     
-    private EtmallCategory.Column[] CHANNEL = {EtmallCategory.Column.id, EtmallCategory.Column.name, EtmallCategory.Column.iconUrl};
+    private Column[] CHANNEL = {Column.id, Column.name, Column.iconUrl};
     
     public List<EtmallCategory> queryL1() {
         EtmallCategoryExample example = new EtmallCategoryExample();

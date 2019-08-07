@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class EtmallBrandService {
+
     @Resource
     private EtmallBrandMapper brandMapper;
 

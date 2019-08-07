@@ -8,12 +8,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class EtmallFootprintService {
+
     @Resource
     private EtmallFootprintMapper footprintMapper;
+
+    public List<EtmallFootprint> queryByAddTime(Integer userId, Integer page, Integer size) {
+        EtmallFootprintExample example = new EtmallFootprintExample();
+        example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
+        example.setOrderByClause(EtmallFootprint.Column.addTime.desc());
+        PageHelper.startPage(page, size);
+        return footprintMapper.selectByExample(example);
+    }
+
+    public EtmallFootprint findById(Integer id) {
+        return footprintMapper.selectByPrimaryKey(id);
+    }
+
+    public void deleteById(Integer id) {
+        footprintMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    public void add(EtmallFootprint footprint) {
+        footprint.setAddTime(LocalDateTime.now());
+        footprint.setUpdateTime(LocalDateTime.now());
+        footprintMapper.insertSelective(footprint);
+    }
 
     public List<EtmallFootprint> querySelective(String userId, String goodsId, Integer page, Integer limit, String sort, String order) {
         EtmallFootprintExample example = new EtmallFootprintExample();
