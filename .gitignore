@@ -1,3 +1,8 @@
 .idea/
 logs/
 *.iml
+etmall-all/target/
+etmall-api-admin/target/
+etmall-api-user/target/
+etmall-core/target/
+etmall-db/target/
