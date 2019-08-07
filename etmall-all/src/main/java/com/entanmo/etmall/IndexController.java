@@ -10,6 +10,6 @@ public class IndexController {
     @RequestMapping("index")
     @ResponseBody
     public String index(){
-        return "hello index";
+        return "hello etmall index";
     }
 }
