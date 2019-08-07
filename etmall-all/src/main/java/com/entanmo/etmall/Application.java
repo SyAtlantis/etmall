@@ -1,6 +1,6 @@
 package com.entanmo.etmall;
 
-//import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(scanBasePackages = {"com.entanmo.etmall"})
-//@MapperScan("com.entanmo.etmall.db.dao")
+@MapperScan("com.entanmo.etmall.db.dao")
 //@EnableTransactionManagement
 //@EnableScheduling
 public class Application {
