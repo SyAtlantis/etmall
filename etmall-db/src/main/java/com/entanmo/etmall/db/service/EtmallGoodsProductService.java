@@ -16,7 +16,7 @@ public class EtmallGoodsProductService {
     @Resource
     private EtmallGoodsProductMapper EtmallGoodsProductMapper;
 //    @Resource
-//    private GoodsProductMapper goodsProductMapper;
+//    private GoodsProduct goodsProduct;
 
     public List<EtmallGoodsProduct> queryByGid(Integer gid) {
         EtmallGoodsProductExample example = new EtmallGoodsProductExample();
@@ -51,10 +51,10 @@ public class EtmallGoodsProductService {
     }
 
 //    public int addStock(Integer id, Short num){
-//        return goodsProductMapper.addStock(id, num);
+//        return goodsProduct.addStock(id, num);
 //    }
 //
 //    public int reduceStock(Integer id, Short num){
-//        return goodsProductMapper.reduceStock(id, num);
+//        return goodsProduct.reduceStock(id, num);
 //    }
 }

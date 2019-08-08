@@ -22,8 +22,8 @@ public class EtmallOrderService {
 
     @Resource
     private EtmallOrderMapper EtmallOrderMapper;
-//    @Resource
-//    private OrderMapper orderMapper;
+    @Resource
+    private IOrder orderMapper;
 
     public int add(EtmallOrder order) {
         order.setAddTime(LocalDateTime.now());
