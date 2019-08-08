@@ -1,6 +1,6 @@
 package com.entanmo.etmall.core.config;
 
-import com.entanmo.etmall.core.dto.TencentSmsSender;
+import com.entanmo.etmall.core.dto.TencentISmsSender;
 import com.entanmo.etmall.core.dto.WxTemplateSender;
 import com.entanmo.etmall.core.service.NotifyService;
 import com.github.qcloudsms.SmsSingleSender;
@@ -62,9 +62,9 @@ public class NotifyAutoConfiguration {
     }
 
     @Bean
-    public TencentSmsSender tencentSmsSender() {
+    public TencentISmsSender tencentSmsSender() {
         NotifyProperties.Sms smsConfig = properties.getSms();
-        TencentSmsSender smsSender = new TencentSmsSender();
+        TencentISmsSender smsSender = new TencentISmsSender();
         smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
         return smsSender;
     }

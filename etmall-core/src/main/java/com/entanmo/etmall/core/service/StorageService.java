@@ -1,6 +1,6 @@
 package com.entanmo.etmall.core.service;
 
-import com.entanmo.etmall.core.dao.Storage;
+import com.entanmo.etmall.core.dao.IStorage;
 import com.entanmo.etmall.core.util.CharUtil;
 import com.entanmo.etmall.db.domain.EtmallStorage;
 import com.entanmo.etmall.db.service.EtmallStorageService;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  */
 public class StorageService {
     private String active;
-    private Storage storage;
+    private IStorage storage;
 
     @Autowired
     private EtmallStorageService EtmallStorageService;
@@ -29,11 +29,11 @@ public class StorageService {
         this.active = active;
     }
 
-    public Storage getStorage() {
+    public IStorage getStorage() {
         return storage;
     }
 
-    public void setStorage(Storage storage) {
+    public void setStorage(IStorage storage) {
         this.storage = storage;
     }
 

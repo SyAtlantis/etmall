@@ -1,6 +1,6 @@
 package com.entanmo.etmall.core.service;
 
-import com.entanmo.etmall.core.dao.GoodsProduct;
+import com.entanmo.etmall.core.dao.IGoodsProduct;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 public class GoodsProductService {
 
     @Resource
-    private GoodsProduct goodsProduct;
+    private IGoodsProduct goodsProduct;
 
     public int addStock(Integer id, Short num){
         return goodsProduct.addStock(id, num);

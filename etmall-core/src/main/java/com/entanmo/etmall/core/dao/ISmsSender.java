@@ -2,7 +2,7 @@ package com.entanmo.etmall.core.dao;
 
 import com.entanmo.etmall.core.vo.SmsResultVo;
 
-public interface SmsSender {
+public interface ISmsSender {
 
     /**
      * 发送短信息

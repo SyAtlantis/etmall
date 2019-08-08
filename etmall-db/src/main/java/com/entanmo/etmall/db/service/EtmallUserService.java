@@ -21,13 +21,13 @@ public class EtmallUserService {
         return userMapper.selectByPrimaryKey(userId);
     }
 
-    public UserVo findUserVoById(Integer userId) {
-        EtmallUser user = findById(userId);
-        UserVo userVo = new UserVo();
-        userVo.setNickname(user.getNickname());
-        userVo.setAvatar(user.getAvatar());
-        return userVo;
-    }
+//    public UserVo findUserVoById(Integer userId) {
+//        EtmallUser user = findById(userId);
+//        UserVo userVo = new UserVo();
+//        userVo.setNickname(user.getNickname());
+//        userVo.setAvatar(user.getAvatar());
+//        return userVo;
+//    }
 
     public EtmallUser queryByOid(String openId) {
         EtmallUserExample example = new EtmallUserExample();

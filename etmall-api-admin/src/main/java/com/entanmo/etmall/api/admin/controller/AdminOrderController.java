@@ -1,8 +1,11 @@
 package com.entanmo.etmall.api.admin.controller;
 
 import com.entanmo.etmall.api.admin.annotation.RequiresPermissionsDesc;
+import com.entanmo.etmall.core.dto.NotifyType;
 import com.entanmo.etmall.core.service.GoodsProductService;
 import com.entanmo.etmall.core.service.NotifyService;
+import com.entanmo.etmall.core.service.OrderService;
+import com.entanmo.etmall.core.service.UserService;
 import com.entanmo.etmall.core.util.JacksonUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.core.validator.Order;
@@ -55,6 +58,10 @@ public class AdminOrderController {
     //    @Autowired
     private GoodsProductService productService;
 
+    private OrderService m_orderService;
+
+    private UserService m_userService;
+
 //    @Autowired
 //    private AdminOrderService adminOrderService;
 
@@ -84,7 +91,7 @@ public class AdminOrderController {
     public Object detail(@NotNull Integer id) {
         EtmallOrder order = orderService.findById(id);
         List<EtmallOrderGoods> orderGoods = orderGoodsService.queryByOid(id);
-        UserVo user = userService.findUserVoById(order.getUserId());
+        UserVo user = m_userService.findUserVoById(order.getUserId());
         Map<String, Object> data = new HashMap<>();
         data.put("order", order);
         data.put("orderGoods", orderGoods);
@@ -150,7 +157,7 @@ public class AdminOrderController {
 
         // 设置订单取消状态
         order.setOrderStatus(OrderUtil.STATUS_REFUND_CONFIRM);
-        if (orderService.updateWithOptimisticLocker(order) == 0) {
+        if (m_orderService.updateWithOptimisticLocker(order) == 0) {
             throw new RuntimeException("更新数据已失效");
         }
 
@@ -202,7 +209,7 @@ public class AdminOrderController {
         order.setShipSn(shipSn);
         order.setShipChannel(shipChannel);
         order.setShipTime(LocalDateTime.now());
-        if (orderService.updateWithOptimisticLocker(order) == 0) {
+        if (m_orderService.updateWithOptimisticLocker(order) == 0) {
             return ResponseUtil.updatedDateExpired();
         }
 

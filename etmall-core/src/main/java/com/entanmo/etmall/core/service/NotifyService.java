@@ -1,6 +1,6 @@
 package com.entanmo.etmall.core.service;
 
-import com.entanmo.etmall.core.dao.SmsSender;
+import com.entanmo.etmall.core.dao.ISmsSender;
 import com.entanmo.etmall.core.dto.NotifyType;
 import com.entanmo.etmall.core.dto.WxTemplateSender;
 import com.entanmo.etmall.core.vo.SmsResultVo;
@@ -17,7 +17,7 @@ public class NotifyService {
     private String sendFrom;
     private String sendTo;
 
-    private SmsSender smsSender;
+    private ISmsSender smsSender;
     private List<Map<String, String>> smsTemplate = new ArrayList<>();
 
     private WxTemplateSender wxTemplateSender;
@@ -167,7 +167,7 @@ public class NotifyService {
         this.sendTo = sendTo;
     }
 
-    public void setSmsSender(SmsSender smsSender) {
+    public void setSmsSender(ISmsSender smsSender) {
         this.smsSender = smsSender;
     }
 

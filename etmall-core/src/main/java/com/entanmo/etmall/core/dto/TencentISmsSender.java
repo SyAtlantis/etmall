@@ -1,6 +1,6 @@
 package com.entanmo.etmall.core.dto;
 
-import com.entanmo.etmall.core.dao.SmsSender;
+import com.entanmo.etmall.core.dao.ISmsSender;
 import com.entanmo.etmall.core.vo.SmsResultVo;
 import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
@@ -13,8 +13,8 @@ import java.io.IOException;
 /*
  * 腾讯云短信服务
  */
-public class TencentSmsSender implements SmsSender {
-    private final Log logger = LogFactory.getLog(TencentSmsSender.class);
+public class TencentISmsSender implements ISmsSender {
+    private final Log logger = LogFactory.getLog(TencentISmsSender.class);
 
     private SmsSingleSender sender;
 
