@@ -69,7 +69,7 @@ public class ResponseUtil {
         return obj;
     }
 
-    private static Object fail(int errno, String errmsg) {
+    public static Object fail(int errno, String errmsg) {
         Map<String, Object> obj = new HashMap<String, Object>();
         obj.put("errno", errno);
         obj.put("errmsg", errmsg);

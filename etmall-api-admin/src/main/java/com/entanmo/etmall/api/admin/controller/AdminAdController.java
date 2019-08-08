@@ -6,6 +6,7 @@ import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.db.domain.EtmallAd;
 import com.entanmo.etmall.db.service.EtmallAdService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class AdminAdController {
         return null;
     }
 
-//    @RequiresPermissions("admin:ad:list")
+    @RequiresPermissions("admin:ad:list")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "查询")
     @GetMapping("/list")
     public Object list(String name, String content,
@@ -44,7 +45,7 @@ public class AdminAdController {
         return ResponseUtil.okList(adList);
     }
 
-//    @RequiresPermissions("admin:ad:create")
+    @RequiresPermissions("admin:ad:create")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "添加")
     @PostMapping("/create")
     public Object create(@RequestBody EtmallAd ad) {
@@ -56,7 +57,7 @@ public class AdminAdController {
         return ResponseUtil.ok(ad);
     }
 
-//    @RequiresPermissions("admin:ad:read")
+    @RequiresPermissions("admin:ad:read")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
@@ -64,7 +65,7 @@ public class AdminAdController {
         return ResponseUtil.ok(ad);
     }
 
-//    @RequiresPermissions("admin:ad:update")
+    @RequiresPermissions("admin:ad:update")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "编辑")
     @PostMapping("/update")
     public Object update(@RequestBody EtmallAd ad) {
@@ -79,7 +80,7 @@ public class AdminAdController {
         return ResponseUtil.ok(ad);
     }
 
-//    @RequiresPermissions("admin:ad:delete")
+    @RequiresPermissions("admin:ad:delete")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "删除")
     @PostMapping("/delete")
     public Object delete(@RequestBody EtmallAd ad) {

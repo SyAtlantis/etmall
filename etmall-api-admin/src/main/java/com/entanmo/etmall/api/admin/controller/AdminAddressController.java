@@ -6,13 +6,13 @@ import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.db.domain.EtmallAddress;
 import com.entanmo.etmall.db.service.EtmallAddressService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 
 @RestController
 @RequestMapping("/admin/address")
@@ -22,7 +22,7 @@ public class AdminAddressController {
 //    @Autowired
     private EtmallAddressService addressService;
 
-//    @RequiresPermissions("admin:address:list")
+    @RequiresPermissions("admin:address:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "收货地址"}, button = "查询")
     @GetMapping("/list")
     public Object list(Integer userId, String name,
