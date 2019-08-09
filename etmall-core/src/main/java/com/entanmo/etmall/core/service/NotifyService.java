@@ -15,6 +15,7 @@ import java.util.Map;
 
 //@Service
 public class NotifyService {
+
     private MailSender mailSender;
     private String sendFrom;
     private String sendTo;

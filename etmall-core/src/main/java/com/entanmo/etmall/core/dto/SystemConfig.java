@@ -8,26 +8,27 @@ import java.util.Map;
  * 系统设置
  */
 public class SystemConfig {
+
     // 小程序相关配置
-    public final static String WX_INDEX_NEW = "wx_index_new";
-    public final static String WX_INDEX_HOT = "wx_index_hot";
-    public final static String WX_INDEX_BRAND = "wx_index_brand";
-    public final static String WX_INDEX_TOPIC = "wx_index_topic";
-    public final static String WX_INDEX_CATLOG_LIST = "wx_catlog_list";
-    public final static String WX_INDEX_CATLOG_GOODS = "wx_catlog_goods";
-    public final static String WX_SHARE = "wx_share";
+    private final static String WX_INDEX_NEW = "wx_index_new";
+    private final static String WX_INDEX_HOT = "wx_index_hot";
+    private final static String WX_INDEX_BRAND = "wx_index_brand";
+    private final static String WX_INDEX_TOPIC = "wx_index_topic";
+    private final static String WX_INDEX_CATLOG_LIST = "wx_catlog_list";
+    private final static String WX_INDEX_CATLOG_GOODS = "wx_catlog_goods";
+    private final static String WX_SHARE = "wx_share";
     // 运费相关配置
-    public final static String EXPRESS_FREIGHT_VALUE = "express_freight_value";
-    public final static String EXPRESS_FREIGHT_MIN = "express_freight_min";
+    private final static String EXPRESS_FREIGHT_VALUE = "express_freight_value";
+    private final static String EXPRESS_FREIGHT_MIN = "express_freight_min";
     // 订单相关配置
-    public final static String ORDER_UNPAID = "order_unpaid";
-    public final static String ORDER_UNCONFIRM = "order_unconfirm";
-    public final static String ORDER_COMMENT = "order_comment";
+    private final static String ORDER_UNPAID = "order_unpaid";
+    private final static String ORDER_UNCONFIRM = "order_unconfirm";
+    private final static String ORDER_COMMENT = "order_comment";
     // 商场相关配置
-    public final static String MALL_NAME = "mall_name";
-    public final static String MALL_ADDRESS = "mall_address";
-    public final static String MALL_PHONE = "mall_phone";
-    public final static String MALL_QQ = "mall_qq";
+    private final static String MALL_NAME = "mall_name";
+    private final static String MALL_ADDRESS = "mall_address";
+    private final static String MALL_PHONE = "mall_phone";
+    private final static String MALL_QQ = "mall_qq";
 
     //所有的配置均保存在该 HashMap 中
     private static Map<String, String> SYSTEM_CONFIGS = new HashMap<>();

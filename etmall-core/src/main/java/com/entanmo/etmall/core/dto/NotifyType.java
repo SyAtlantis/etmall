@@ -1,6 +1,7 @@
 package com.entanmo.etmall.core.dto;
 
 public enum NotifyType {
+
     PAY_SUCCEED("paySucceed"),
     SHIP("ship"),
     REFUND("refund"),

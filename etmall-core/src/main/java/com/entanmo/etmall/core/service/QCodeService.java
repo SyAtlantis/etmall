@@ -1,6 +1,7 @@
 package com.entanmo.etmall.core.service;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
+import com.entanmo.etmall.core.dto.SystemConfig;
 import com.entanmo.etmall.db.domain.EtmallGroupon;
 import com.entanmo.etmall.db.domain.EtmallStorage;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -21,10 +22,10 @@ public class QCodeService {
 
     private final Log logger = LogFactory.getLog(QCodeService.class);
 
-//    @Autowired
-    WxMaService wxMaService;
+    // @Autowired
+    private WxMaService wxMaService;
 
-//    @Autowired
+    // @Autowired
     private StorageService storageService;
 
 
@@ -58,8 +59,8 @@ public class QCodeService {
      * 创建商品分享图
      */
     public String createGoodShareImage(String goodId, String goodPicUrl, String goodName) {
-//        if (!SystemConfig.isAutoCreateShareImage())
-//            return "";
+        if (!SystemConfig.isAutoCreateShareImage())
+            return "";
 
         try {
             //创建该商品的二维码

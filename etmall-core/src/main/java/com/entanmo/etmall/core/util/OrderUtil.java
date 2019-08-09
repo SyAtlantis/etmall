@@ -1,7 +1,5 @@
 package com.entanmo.etmall.core.util;
 
-
-
 import com.entanmo.etmall.core.vo.OrderVo;
 import com.entanmo.etmall.db.constant.OrderStatusConstant;
 import com.entanmo.etmall.db.domain.EtmallOrder;

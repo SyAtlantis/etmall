@@ -8,6 +8,7 @@ import java.util.Map;
 
 @ConfigurationProperties(prefix = "etmall.notify")
 public class NotifyProperties {
+
     private Mail mail;
     private Sms sms;
     private Wx wx;

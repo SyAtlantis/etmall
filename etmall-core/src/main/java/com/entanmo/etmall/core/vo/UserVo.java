@@ -1,6 +1,7 @@
 package com.entanmo.etmall.core.vo;
 
 public class UserVo {
+
     private String nickname;
     private String avatar;
 

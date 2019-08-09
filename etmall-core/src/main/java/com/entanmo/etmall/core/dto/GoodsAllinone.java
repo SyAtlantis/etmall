@@ -7,10 +7,10 @@ import com.entanmo.etmall.db.domain.EtmallGoodsSpecification;
 
 public class GoodsAllinone {
 
-    EtmallGoods goods;
-    EtmallGoodsSpecification[] specifications;
-    EtmallGoodsAttribute[] attributes;
-    EtmallGoodsProduct[] products;
+    private EtmallGoods goods;
+    private EtmallGoodsSpecification[] specifications;
+    private EtmallGoodsAttribute[] attributes;
+    private EtmallGoodsProduct[] products;
 
     public EtmallGoods getGoods() {
         return goods;

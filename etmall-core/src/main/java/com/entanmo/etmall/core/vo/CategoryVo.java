@@ -3,6 +3,7 @@ package com.entanmo.etmall.core.vo;
 import java.util.List;
 
 public class CategoryVo {
+
     private Integer id;
     private String name;
     private String keywords;

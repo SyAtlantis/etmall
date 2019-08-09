@@ -7,6 +7,7 @@ import java.util.Map;
 
 @Service
 public class StatService {
+
     public List<Map> statUser() {
         return null;
     }

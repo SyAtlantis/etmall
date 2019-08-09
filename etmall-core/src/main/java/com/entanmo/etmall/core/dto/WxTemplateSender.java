@@ -18,10 +18,10 @@ import java.util.List;
 public class WxTemplateSender {
     private final Log logger = LogFactory.getLog(WxTemplateSender.class);
 
-//    @Autowired
+    //    @Autowired
     private WxMaService wxMaService;
 
-//    @Autowired
+    //    @Autowired
     private EtmallUserFormIdService formIdService;
 
     /**
@@ -47,8 +47,7 @@ public class WxTemplateSender {
         sendMsg(touser, templatId, parms, page, "", "");
     }
 
-    private void sendMsg(String touser, String templatId, String[] parms, String page, String color,
-                         String emphasisKeyword) {
+    private void sendMsg(String touser, String templatId, String[] parms, String page, String color, String emphasisKeyword) {
         EtmallUserFormid userFormid = formIdService.queryByOpenId(touser);
         if (userFormid == null)
             return;

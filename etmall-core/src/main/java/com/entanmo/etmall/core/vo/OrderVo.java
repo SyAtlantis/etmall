@@ -1,6 +1,7 @@
 package com.entanmo.etmall.core.vo;
 
 public class OrderVo {
+
     private boolean cancel = false;      // 取消操作
     private boolean delete = false;      // 删除操作
     private boolean pay = false;         // 支付操作
