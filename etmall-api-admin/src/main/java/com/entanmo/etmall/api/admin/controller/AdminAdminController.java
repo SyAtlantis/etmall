@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-import static com.entanmo.etmall.db.constant.AdminResponseConstans.*;
+import static com.entanmo.etmall.db.constant.AdminResponseConstant.*;
 
 
 @RestController

@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class WxSwagger2Configuration {
+public class WxSwagger2Config {
     @Bean
     public Docket wxDocket() {
 

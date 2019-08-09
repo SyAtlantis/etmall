@@ -2,10 +2,13 @@ package com.entanmo.etmall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.entanmo.etmall.db.dao.EtmallCouponMapper;
+import com.entanmo.etmall.db.dao.EtmallCouponUserMapper;
 import com.entanmo.etmall.db.domain.EtmallCoupon;
 import com.entanmo.etmall.db.domain.EtmallCoupon.Column;
 import com.entanmo.etmall.db.domain.EtmallCouponExample;
 import com.entanmo.etmall.db.constant.CouponConstant;
+import com.entanmo.etmall.db.domain.EtmallCouponUser;
+import com.entanmo.etmall.db.domain.EtmallCouponUserExample;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class EtmallCouponService {
@@ -20,7 +24,7 @@ public class EtmallCouponService {
     @Resource
     private EtmallCouponMapper couponMapper;
 //    @Resource
-//    private EtmallCouponUserMapper couponUserMapper;
+    private EtmallCouponUserMapper couponUserMapper;
 
     private Column[] result = new Column[]{Column.id, Column.name, Column.desc, Column.tag,
                                             Column.days, Column.startTime, Column.endTime,
@@ -43,18 +47,18 @@ public class EtmallCouponService {
         return couponMapper.selectByExampleSelective(criteria.example(), result);
     }
 
-//    public List<EtmallCoupon> queryAvailableList(Integer userId, int offset, int limit) {
-//        assert userId != null;
-//        // 过滤掉登录账号已经领取过的coupon
-//        EtmallCouponExample.Criteria c = EtmallCouponExample.newAndCreateCriteria();
-//        List<EtmallCouponUser> used = couponUserMapper.selectByExample(
-//                EtmallCouponUserExample.newAndCreateCriteria().andUserIdEqualTo(userId).example()
-//        );
-//        if(used!=null && !used.isEmpty()){
-//            c.andIdNotIn(used.stream().map(EtmallCouponUser::getCouponId).collect(Collectors.toList()));
-//        }
-//        return queryList(c, offset, limit, "add_time", "desc");
-//    }
+    public List<EtmallCoupon> queryAvailableList(Integer userId, int offset, int limit) {
+        assert userId != null;
+        // 过滤掉登录账号已经领取过的coupon
+        EtmallCouponExample.Criteria c = EtmallCouponExample.newAndCreateCriteria();
+        List<EtmallCouponUser> used = couponUserMapper.selectByExample(
+                EtmallCouponUserExample.newAndCreateCriteria().andUserIdEqualTo(userId).example()
+        );
+        if(used!=null && !used.isEmpty()){
+            c.andIdNotIn(used.stream().map(EtmallCouponUser::getCouponId).collect(Collectors.toList()));
+        }
+        return queryList(c, offset, limit, "add_time", "desc");
+    }
 
     public List<EtmallCoupon> queryList(int offset, int limit) {
         return queryList(offset, limit, "add_time", "desc");

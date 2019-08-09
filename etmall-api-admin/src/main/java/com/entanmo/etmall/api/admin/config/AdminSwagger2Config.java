@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class AdminSwagger2Configuration {
+public class AdminSwagger2Config {
     @Bean
     public Docket adminDocket() {
 

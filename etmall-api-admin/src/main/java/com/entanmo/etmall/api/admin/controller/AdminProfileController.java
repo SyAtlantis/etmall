@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.entanmo.etmall.db.constant.AdminResponseConstans.ADMIN_INVALID_ACCOUNT;
+import static com.entanmo.etmall.db.constant.AdminResponseConstant.ADMIN_INVALID_ACCOUNT;
 
 @RestController
 @RequestMapping("/admin/profile")

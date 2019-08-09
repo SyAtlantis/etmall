@@ -38,6 +38,12 @@ public class EtmallAddressService {
         addressMapper.updateByExampleSelective(address, example);
     }
 
+    public EtmallAddress findDefault(Integer userId) {
+        EtmallAddressExample example = new EtmallAddressExample();
+        example.or().andUserIdEqualTo(userId).andIsDefaultEqualTo(true).andDeletedEqualTo(false);
+        return addressMapper.selectOneByExample(example);
+    }
+
     public int add(EtmallAddress address) {
         address.setAddTime(LocalDateTime.now());
         address.setUpdateTime(LocalDateTime.now());

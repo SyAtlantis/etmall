@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.entanmo.etmall.db.constant.AdminResponseConstans.GOODS_NAME_EXIST;
+import static com.entanmo.etmall.db.constant.AdminResponseConstant.GOODS_NAME_EXIST;
 
 @RestController
 @RequestMapping("/admin/goods")

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static com.entanmo.etmall.db.constant.AdminResponseConstans.ADMIN_INVALID_ACCOUNT;
+import static com.entanmo.etmall.db.constant.AdminResponseConstant.ADMIN_INVALID_ACCOUNT;
 
 @RestController
 @RequestMapping("/admin/auth")

@@ -1,6 +1,6 @@
 package com.entanmo.etmall.db.constant;
 
-public class AdminResponseConstans {
+public class AdminResponseConstant {
     public static final Integer ADMIN_INVALID_NAME = 601;
     public static final Integer ADMIN_INVALID_PASSWORD = 602;
     public static final Integer ADMIN_NAME_EXIST = 602;

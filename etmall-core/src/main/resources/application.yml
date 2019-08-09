@@ -2,5 +2,5 @@ spring:
   messages:
     encoding: UTF-8
 
-server:
-  port: 9002
+#server:
+#  port: 9002
