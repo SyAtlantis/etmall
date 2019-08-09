@@ -1,4 +1,4 @@
-package com.entanmo.etmall.db.util;
+package com.entanmo.etmall.db.constant;
 
 public class CouponUserConstant {
     public static final Short STATUS_USABLE = 0;

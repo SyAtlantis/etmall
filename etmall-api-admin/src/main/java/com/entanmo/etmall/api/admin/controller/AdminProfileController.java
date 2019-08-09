@@ -5,12 +5,9 @@ import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.core.util.bcrypt.BCryptPasswordEncoder;
 import com.entanmo.etmall.db.domain.EtmallAdmin;
 import com.entanmo.etmall.db.service.EtmallAdminService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.entanmo.etmall.core.util.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
+import static com.entanmo.etmall.db.constant.AdminResponseConstans.ADMIN_INVALID_ACCOUNT;
 
 @RestController
 @RequestMapping("/admin/profile")

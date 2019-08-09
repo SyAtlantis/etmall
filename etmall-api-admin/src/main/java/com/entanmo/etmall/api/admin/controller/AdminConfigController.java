@@ -1,6 +1,7 @@
 package com.entanmo.etmall.api.admin.controller;
 
 import com.entanmo.etmall.api.admin.annotation.RequiresPermissionsDesc;
+import com.entanmo.etmall.core.dto.SystemConfig;
 import com.entanmo.etmall.core.util.JacksonUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.db.service.EtmallSystemConfigService;

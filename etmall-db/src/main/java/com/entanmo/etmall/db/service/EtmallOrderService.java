@@ -1,9 +1,9 @@
 package com.entanmo.etmall.db.service;
 
+import com.entanmo.etmall.db.constant.OrderStatusConstant;
 import com.entanmo.etmall.db.dao.EtmallOrderMapper;
 import com.entanmo.etmall.db.domain.EtmallOrder;
 import com.entanmo.etmall.db.domain.EtmallOrderExample;
-import com.entanmo.etmall.db.util.OrderUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,6 +22,7 @@ public class EtmallOrderService {
 
     @Resource
     private EtmallOrderMapper EtmallOrderMapper;
+
 //    @Resource
 //    private IOrder orderMapper;
 
@@ -129,7 +130,7 @@ public class EtmallOrderService {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expired = now.minusMinutes(minutes);
         EtmallOrderExample example = new EtmallOrderExample();
-        example.or().andOrderStatusEqualTo(OrderUtil.STATUS_CREATE).andAddTimeLessThan(expired).andDeletedEqualTo(false);
+        example.or().andOrderStatusEqualTo(OrderStatusConstant.STATUS_CREATE).andAddTimeLessThan(expired).andDeletedEqualTo(false);
         return EtmallOrderMapper.selectByExample(example);
     }
 
@@ -137,7 +138,7 @@ public class EtmallOrderService {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expired = now.minusDays(days);
         EtmallOrderExample example = new EtmallOrderExample();
-        example.or().andOrderStatusEqualTo(OrderUtil.STATUS_SHIP).andShipTimeLessThan(expired).andDeletedEqualTo(false);
+        example.or().andOrderStatusEqualTo(OrderStatusConstant.STATUS_SHIP).andShipTimeLessThan(expired).andDeletedEqualTo(false);
         return EtmallOrderMapper.selectByExample(example);
     }
 
@@ -147,37 +148,37 @@ public class EtmallOrderService {
         return EtmallOrderMapper.selectOneByExample(example);
     }
 
-    public Map<Object, Object> orderInfo(Integer userId) {
-        EtmallOrderExample example = new EtmallOrderExample();
-        example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
-        List<EtmallOrder> orders = EtmallOrderMapper.selectByExampleSelective(example, EtmallOrder.Column.orderStatus, EtmallOrder.Column.comments);
-
-        int unpaid = 0;
-        int unship = 0;
-        int unrecv = 0;
-        int uncomment = 0;
-        for (EtmallOrder order : orders) {
-            if (OrderUtil.isCreateStatus(order)) {
-                unpaid++;
-            } else if (OrderUtil.isPayStatus(order)) {
-                unship++;
-            } else if (OrderUtil.isShipStatus(order)) {
-                unrecv++;
-            } else if (OrderUtil.isConfirmStatus(order) || OrderUtil.isAutoConfirmStatus(order)) {
-                uncomment += order.getComments();
-            } else {
-                // do nothing
-            }
-        }
-
-        Map<Object, Object> orderInfo = new HashMap<Object, Object>();
-        orderInfo.put("unpaid", unpaid);
-        orderInfo.put("unship", unship);
-        orderInfo.put("unrecv", unrecv);
-        orderInfo.put("uncomment", uncomment);
-        return orderInfo;
-
-    }
+//    public Map<Object, Object> orderInfo(Integer userId) {
+//        EtmallOrderExample example = new EtmallOrderExample();
+//        example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
+//        List<EtmallOrder> orders = EtmallOrderMapper.selectByExampleSelective(example, EtmallOrder.Column.orderStatus, EtmallOrder.Column.comments);
+//
+//        int unpaid = 0;
+//        int unship = 0;
+//        int unrecv = 0;
+//        int uncomment = 0;
+//        for (EtmallOrder order : orders) {
+//            if (OrderUtil.isCreateStatus(order)) {
+//                unpaid++;
+//            } else if (OrderUtil.isPayStatus(order)) {
+//                unship++;
+//            } else if (OrderUtil.isShipStatus(order)) {
+//                unrecv++;
+//            } else if (OrderUtil.isConfirmStatus(order) || OrderUtil.isAutoConfirmStatus(order)) {
+//                uncomment += order.getComments();
+//            } else {
+//                // do nothing
+//            }
+//        }
+//
+//        Map<Object, Object> orderInfo = new HashMap<Object, Object>();
+//        orderInfo.put("unpaid", unpaid);
+//        orderInfo.put("unship", unship);
+//        orderInfo.put("unrecv", unrecv);
+//        orderInfo.put("uncomment", uncomment);
+//        return orderInfo;
+//
+//    }
 
     public List<EtmallOrder> queryComment(int days) {
         LocalDateTime now = LocalDateTime.now();

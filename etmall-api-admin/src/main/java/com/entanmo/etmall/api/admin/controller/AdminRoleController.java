@@ -3,7 +3,7 @@ package com.entanmo.etmall.api.admin.controller;
 import com.entanmo.etmall.api.admin.annotation.RequiresPermissionsDesc;
 import com.entanmo.etmall.api.admin.permissions.Permission;
 import com.entanmo.etmall.api.admin.permissions.PermissionUtil;
-import com.entanmo.etmall.core.util.AdminResponseCode;
+import com.entanmo.etmall.db.constant.AdminResponseConstans;
 import com.entanmo.etmall.core.util.JacksonUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.core.validator.Order;
@@ -15,8 +15,6 @@ import com.entanmo.etmall.db.domain.EtmallRole;
 import com.entanmo.etmall.db.service.EtmallAdminService;
 import com.entanmo.etmall.db.service.EtmallPermissionService;
 import com.entanmo.etmall.db.service.EtmallRoleService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -27,8 +25,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
-import static com.entanmo.etmall.core.util.AdminResponseCode.ROLE_NAME_EXIST;
-import static com.entanmo.etmall.core.util.AdminResponseCode.ROLE_USER_EXIST;
+import static com.entanmo.etmall.db.constant.AdminResponseConstans.ROLE_NAME_EXIST;
+import static com.entanmo.etmall.db.constant.AdminResponseConstans.ROLE_USER_EXIST;
 
 @RestController
 @RequestMapping("/admin/role")
@@ -207,7 +205,7 @@ public class AdminRoleController {
 
         // 如果修改的角色是超级权限，则拒绝修改。
         if (permissionService.checkSuperPermission(roleId)) {
-            return ResponseUtil.fail(AdminResponseCode.ROLE_SUPER_SUPERMISSION, "当前角色的超级权限不能变更");
+            return ResponseUtil.fail(AdminResponseConstans.ROLE_SUPER_SUPERMISSION, "当前角色的超级权限不能变更");
         }
 
         // 先删除旧的权限，再更新新的权限

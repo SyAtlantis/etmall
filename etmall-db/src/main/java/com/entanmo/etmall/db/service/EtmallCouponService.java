@@ -5,7 +5,7 @@ import com.entanmo.etmall.db.dao.EtmallCouponMapper;
 import com.entanmo.etmall.db.domain.EtmallCoupon;
 import com.entanmo.etmall.db.domain.EtmallCoupon.Column;
 import com.entanmo.etmall.db.domain.EtmallCouponExample;
-import com.entanmo.etmall.db.util.CouponConstant;
+import com.entanmo.etmall.db.constant.CouponConstant;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 @Service
 public class EtmallCouponService {

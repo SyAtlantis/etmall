@@ -2,11 +2,13 @@ package com.entanmo.etmall.core.util;
 
 import com.github.pagehelper.Page;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ResponseUtil {
+
     public static Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();
         obj.put("errno", 0);
@@ -76,7 +78,6 @@ public class ResponseUtil {
         return obj;
     }
 
-
     public static Object badArgument() {
         return fail(401, "参数不对");
     }
@@ -108,4 +109,5 @@ public class ResponseUtil {
     public static Object unauthz() {
         return fail(506, "无操作权限");
     }
+
 }

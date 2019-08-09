@@ -1,4 +1,4 @@
-package com.entanmo.etmall.db.util;
+package com.entanmo.etmall.db.constant;
 
 public class CouponConstant {
     public static final Short TYPE_COMMON = 0;

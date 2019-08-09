@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-@Configuration
+//@Configuration
 @EnableConfigurationProperties(NotifyProperties.class)
-public class NotifyAutoConfiguration {
+public class NotifyAutoConfig {
 
     private final NotifyProperties properties;
 
-    public NotifyAutoConfiguration(NotifyProperties properties) {
+    public NotifyAutoConfig(NotifyProperties properties) {
         this.properties = properties;
     }
 

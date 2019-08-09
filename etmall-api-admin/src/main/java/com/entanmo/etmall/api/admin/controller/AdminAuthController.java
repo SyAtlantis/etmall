@@ -7,8 +7,6 @@ import com.entanmo.etmall.db.domain.EtmallAdmin;
 import com.entanmo.etmall.db.service.EtmallAdminService;
 import com.entanmo.etmall.db.service.EtmallPermissionService;
 import com.entanmo.etmall.db.service.EtmallRoleService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -16,8 +14,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static com.entanmo.etmall.core.util.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
+import static com.entanmo.etmall.db.constant.AdminResponseConstans.ADMIN_INVALID_ACCOUNT;
 
 @RestController
 @RequestMapping("/admin/auth")

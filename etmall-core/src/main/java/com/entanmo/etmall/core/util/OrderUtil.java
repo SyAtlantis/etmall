@@ -1,7 +1,9 @@
-package com.entanmo.etmall.db.util;
+package com.entanmo.etmall.core.util;
 
 
 
+import com.entanmo.etmall.core.vo.OrderVo;
+import com.entanmo.etmall.db.constant.OrderStatusConstant;
 import com.entanmo.etmall.db.domain.EtmallOrder;
 
 import java.util.ArrayList;
@@ -22,17 +24,6 @@ import java.util.List;
  * 当402系统自动确认收货以后，此时用户可以删除、去评价、或者再次购买
  */
 public class OrderUtil {
-
-    public static final Short STATUS_CREATE = 101;
-    public static final Short STATUS_PAY = 201;
-    public static final Short STATUS_SHIP = 301;
-    public static final Short STATUS_CONFIRM = 401;
-    public static final Short STATUS_CANCEL = 102;
-    public static final Short STATUS_AUTO_CANCEL = 103;
-    public static final Short STATUS_REFUND = 202;
-    public static final Short STATUS_REFUND_CONFIRM = 203;
-    public static final Short STATUS_AUTO_CONFIRM = 402;
-
 
     public static String orderStatusText(EtmallOrder order) {
         int status = order.getOrderStatus().intValue();
@@ -76,10 +67,9 @@ public class OrderUtil {
         throw new IllegalStateException("orderStatus不支持");
     }
 
-
-    public static OrderHandleOption build(EtmallOrder order) {
+    public static OrderVo build(EtmallOrder order) {
         int status = order.getOrderStatus().intValue();
-        OrderHandleOption handleOption = new OrderHandleOption();
+        OrderVo handleOption = new OrderVo();
 
         if (status == 101) {
             // 如果订单没有被取消，且没有支付，则可支付，可取消
@@ -143,38 +133,38 @@ public class OrderUtil {
 
 
     public static boolean isCreateStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_CREATE == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_CREATE == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isPayStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_PAY == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_PAY == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isShipStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_SHIP == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_SHIP == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isConfirmStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isCancelStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_CANCEL == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_CANCEL == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isAutoCancelStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_AUTO_CANCEL == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_AUTO_CANCEL == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isRefundStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_REFUND == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_REFUND == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isRefundConfirmStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_REFUND_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_REFUND_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
     }
 
     public static boolean isAutoConfirmStatus(EtmallOrder EtmallOrder) {
-        return OrderUtil.STATUS_AUTO_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
+        return OrderStatusConstant.STATUS_AUTO_CONFIRM == EtmallOrder.getOrderStatus().shortValue();
     }
 }

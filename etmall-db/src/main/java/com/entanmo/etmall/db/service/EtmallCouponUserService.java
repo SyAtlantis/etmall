@@ -3,7 +3,7 @@ package com.entanmo.etmall.db.service;
 import com.entanmo.etmall.db.dao.EtmallCouponUserMapper;
 import com.entanmo.etmall.db.domain.EtmallCouponUser;
 import com.entanmo.etmall.db.domain.EtmallCouponUserExample;
-import com.entanmo.etmall.db.util.CouponUserConstant;
+import com.entanmo.etmall.db.constant.CouponUserConstant;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

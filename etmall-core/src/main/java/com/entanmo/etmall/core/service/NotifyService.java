@@ -7,11 +7,13 @@ import com.entanmo.etmall.core.vo.SmsResultVo;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+//@Service
 public class NotifyService {
     private MailSender mailSender;
     private String sendFrom;

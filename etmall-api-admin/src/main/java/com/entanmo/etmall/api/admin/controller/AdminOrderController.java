@@ -11,11 +11,11 @@ import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.core.vo.UserVo;
+import com.entanmo.etmall.db.constant.OrderStatusConstant;
 import com.entanmo.etmall.db.domain.EtmallComment;
 import com.entanmo.etmall.db.domain.EtmallOrder;
 import com.entanmo.etmall.db.domain.EtmallOrderGoods;
 import com.entanmo.etmall.db.service.*;
-import com.entanmo.etmall.db.util.OrderUtil;
 import com.github.binarywang.wxpay.bean.request.WxPayRefundRequest;
 import com.github.binarywang.wxpay.bean.result.WxPayRefundResult;
 import com.github.binarywang.wxpay.exception.WxPayException;
@@ -23,7 +23,6 @@ import com.github.binarywang.wxpay.service.WxPayService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.entanmo.etmall.core.util.AdminResponseCode.*;
+import static com.entanmo.etmall.db.constant.AdminResponseConstans.*;
 
 @RestController
 @RequestMapping("/admin/order")
@@ -126,7 +125,7 @@ public class AdminOrderController {
         }
 
         // 如果订单不是退款状态，则不能退款
-        if (!order.getOrderStatus().equals(OrderUtil.STATUS_REFUND)) {
+        if (!order.getOrderStatus().equals(OrderStatusConstant.STATUS_REFUND)) {
             return ResponseUtil.fail(ORDER_CONFIRM_NOT_ALLOWED, "订单不能确认收货");
         }
 
@@ -156,7 +155,7 @@ public class AdminOrderController {
         }
 
         // 设置订单取消状态
-        order.setOrderStatus(OrderUtil.STATUS_REFUND_CONFIRM);
+        order.setOrderStatus(OrderStatusConstant.STATUS_REFUND_CONFIRM);
         if (m_orderService.updateWithOptimisticLocker(order) == 0) {
             throw new RuntimeException("更新数据已失效");
         }
@@ -201,11 +200,11 @@ public class AdminOrderController {
         }
 
         // 如果订单不是已付款状态，则不能发货
-        if (!order.getOrderStatus().equals(OrderUtil.STATUS_PAY)) {
+        if (!order.getOrderStatus().equals(OrderStatusConstant.STATUS_PAY)) {
             return ResponseUtil.fail(ORDER_CONFIRM_NOT_ALLOWED, "订单不能确认收货");
         }
 
-        order.setOrderStatus(OrderUtil.STATUS_SHIP);
+        order.setOrderStatus(OrderStatusConstant.STATUS_SHIP);
         order.setShipSn(shipSn);
         order.setShipChannel(shipChannel);
         order.setShipTime(LocalDateTime.now());
