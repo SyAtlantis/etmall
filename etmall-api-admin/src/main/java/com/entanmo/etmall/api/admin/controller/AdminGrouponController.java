@@ -30,11 +30,11 @@ import java.util.Map;
 public class AdminGrouponController {
     private final Log logger = LogFactory.getLog(AdminGrouponController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallGrouponRulesService rulesService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
-//    @Autowired
+    @Autowired
     private EtmallGrouponService grouponService;
 
     @RequiresPermissions("admin:groupon:read")

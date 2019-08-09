@@ -29,9 +29,9 @@ import java.util.Map;
 public class AdminTopicController {
 //    private final Log logger = LogFactory.getLog(AdminTopicController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallTopicService topicService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
     @RequiresPermissions("admin:topic:list")

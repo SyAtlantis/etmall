@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminFeedbackController {
     private final Log logger = LogFactory.getLog(AdminFeedbackController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallFeedbackService feedbackService;
 
     @RequiresPermissions("admin:feedback:list")

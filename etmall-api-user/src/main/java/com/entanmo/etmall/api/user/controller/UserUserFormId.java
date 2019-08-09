@@ -23,10 +23,10 @@ import java.time.LocalDateTime;
 public class UserUserFormId {
     private final Log logger = LogFactory.getLog(UserUserFormId.class);
 
-//    @Autowired
+    @Autowired
     private EtmallUserService userService;
 
-//    @Autowired
+    @Autowired
     private EtmallUserFormIdService formIdService;
 
     @GetMapping("create")

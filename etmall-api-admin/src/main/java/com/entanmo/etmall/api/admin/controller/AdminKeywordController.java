@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminKeywordController {
 //    private final Log logger = LogFactory.getLog(AdminKeywordController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallKeywordService keywordService;
 
     @RequiresPermissions("admin:keyword:list")

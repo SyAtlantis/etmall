@@ -5,6 +5,7 @@ import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.db.domain.EtmallIssue;
 import com.entanmo.etmall.db.service.EtmallIssueService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import java.util.List;
 @Validated
 public class UserIssueController {
 
+    @Autowired
     private EtmallIssueService issueService;
 
     @GetMapping("/list")

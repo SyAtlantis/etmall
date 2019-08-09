@@ -4,6 +4,7 @@ import com.entanmo.etmall.api.user.annotation.LoginUser;
 import com.entanmo.etmall.core.service.UserOrderService;
 import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import javax.validation.constraints.NotNull;
 @Validated
 public class UserOrderController {
 
+    @Autowired
     private UserOrderService userOrderService;
 
     /**

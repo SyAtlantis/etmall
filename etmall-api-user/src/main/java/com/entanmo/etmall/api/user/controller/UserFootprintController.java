@@ -27,9 +27,9 @@ import java.util.Map;
 public class UserFootprintController {
 //    private final Log logger = LogFactory.getLog(UserFootprintController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallFootprintService footprintService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
     /**

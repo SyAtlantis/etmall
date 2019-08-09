@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminCollectController {
 //    private final Log logger = LogFactory.getLog(AdminCollectController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCollectService collectService;
 
 

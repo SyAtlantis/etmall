@@ -25,7 +25,7 @@ import java.util.Map;
 public class AdminCategoryController {
     private final Log logger = LogFactory.getLog(AdminCategoryController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCategoryService categoryService;
 
     @RequiresPermissions("admin:category:list")

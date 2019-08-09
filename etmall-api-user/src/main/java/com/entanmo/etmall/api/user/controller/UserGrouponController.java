@@ -43,23 +43,23 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.ORDER_UNKNOWN;
 public class UserGrouponController {
 //    private final Log logger = LogFactory.getLog(UserGrouponController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallGrouponRulesService rulesService;
-//    @Autowired
+    @Autowired
     private UserGrouponRuleService wxGrouponRuleService;
-//    @Autowired
+    @Autowired
     private EtmallGrouponService grouponService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
-//    @Autowired
+    @Autowired
     private EtmallOrderService orderService;
-//    @Autowired
+    @Autowired
     private EtmallOrderGoodsService orderGoodsService;
-//    @Autowired
+    @Autowired
     private EtmallUserService userService;
-//    @Autowired
+    @Autowired
     private ExpressService expressService;
-//    @Autowired
+    @Autowired
     private EtmallGrouponRulesService grouponRulesService;
 
     private UserService m_userService;

@@ -34,11 +34,11 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.ROLE_USER_EXI
 public class AdminRoleController {
 //    private final Log logger = LogFactory.getLog(AdminRoleController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallRoleService roleService;
-//    @Autowired
+    @Autowired
     private EtmallPermissionService permissionService;
-//    @Autowired
+    @Autowired
     private EtmallAdminService adminService;
 
     @RequiresPermissions("admin:role:list")

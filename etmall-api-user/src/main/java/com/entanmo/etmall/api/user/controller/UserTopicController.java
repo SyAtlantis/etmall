@@ -31,9 +31,9 @@ import java.util.Map;
 public class UserTopicController {
 //    private final Log logger = LogFactory.getLog(UserTopicController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallTopicService topicService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
     /**

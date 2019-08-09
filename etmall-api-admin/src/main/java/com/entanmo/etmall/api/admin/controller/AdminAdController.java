@@ -7,6 +7,7 @@ import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.db.domain.EtmallAd;
 import com.entanmo.etmall.db.service.EtmallAdService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @Validated
 public class AdminAdController {
 
+    @Autowired
     private EtmallAdService adService;
 
     private Object validate(EtmallAd ad) {

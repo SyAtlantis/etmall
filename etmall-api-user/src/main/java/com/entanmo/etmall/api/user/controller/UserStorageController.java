@@ -27,9 +27,9 @@ import java.io.IOException;
 public class UserStorageController {
 //    private final Log logger = LogFactory.getLog(UserStorageController.class);
 
-//    @Autowired
+    @Autowired
     private StorageService storageService;
-//    @Autowired
+    @Autowired
     private EtmallStorageService EtmallStorageService;
 
     private String generateKey(String originalFilename) {

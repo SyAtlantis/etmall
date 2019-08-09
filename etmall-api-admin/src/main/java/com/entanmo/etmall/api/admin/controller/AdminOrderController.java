@@ -23,6 +23,7 @@ import com.github.binarywang.wxpay.service.WxPayService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -42,23 +43,23 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.*;
 public class AdminOrderController {
     private final Log logger = LogFactory.getLog(AdminOrderController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallOrderGoodsService orderGoodsService;
-//    @Autowired
+    @Autowired
     private EtmallOrderService orderService;
-//    @Autowired
+    @Autowired
     private EtmallUserService userService;
-//    @Autowired
+    @Autowired
     private EtmallCommentService commentService;
-//    @Autowired
+    @Autowired
     private WxPayService wxPayService;
-//    @Autowired
+    @Autowired
     private NotifyService notifyService;
-    //    @Autowired
-    private GoodsProductService productService;
-
+//    @Autowired
+    private GoodsProductService m_productService;
+//    @Autowired
     private OrderService m_orderService;
-
+//    @Autowired
     private UserService m_userService;
 
 //    @Autowired
@@ -165,7 +166,7 @@ public class AdminOrderController {
         for (EtmallOrderGoods orderGoods : orderGoodsList) {
             Integer productId = orderGoods.getProductId();
             Short number = orderGoods.getNumber();
-            if (productService.addStock(productId, number) == 0) {
+            if (m_productService.addStock(productId, number) == 0) {
                 throw new RuntimeException("商品货品库存增加失败");
             }
         }

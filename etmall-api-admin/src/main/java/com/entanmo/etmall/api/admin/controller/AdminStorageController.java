@@ -28,7 +28,7 @@ public class AdminStorageController {
 
 //    @Autowired
     private StorageService storageService;
-//    @Autowired
+    @Autowired
     private EtmallStorageService EtmallStorageService;
 
     @RequiresPermissions("admin:storage:list")

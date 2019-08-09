@@ -29,9 +29,9 @@ import java.util.Map;
 public class UserSearchController {
 //    private final Log logger = LogFactory.getLog(UserSearchController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallKeywordService keywordsService;
-//    @Autowired
+    @Autowired
     private EtmallSearchHistoryService searchHistoryService;
 
     /**

@@ -22,7 +22,7 @@ import java.util.Map;
 public class AdminStatController {
 //    private final Log logger = LogFactory.getLog(AdminStatController.class);
 
-//    @Autowired
+    @Autowired
     private StatService statService;
 
     @RequiresPermissions("admin:stat:user")

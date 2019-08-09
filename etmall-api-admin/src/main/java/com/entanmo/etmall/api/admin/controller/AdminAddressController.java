@@ -19,7 +19,7 @@ import java.util.List;
 @Validated
 public class AdminAddressController {
 
-//    @Autowired
+    @Autowired
     private EtmallAddressService addressService;
 
     @RequiresPermissions("admin:address:list")

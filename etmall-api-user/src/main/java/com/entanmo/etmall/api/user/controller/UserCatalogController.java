@@ -3,6 +3,7 @@ package com.entanmo.etmall.api.user.controller;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.db.domain.EtmallCategory;
 import com.entanmo.etmall.db.service.EtmallCategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import java.util.Map;
 @Validated
 public class UserCatalogController {
 
+    @Autowired
     private EtmallCategoryService categoryService;
 
     // 分类详情

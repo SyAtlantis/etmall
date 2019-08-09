@@ -5,6 +5,7 @@ import com.entanmo.etmall.core.util.RegexUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.db.domain.EtmallAddress;
 import com.entanmo.etmall.db.service.EtmallAddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ import java.util.List;
 @Validated
 public class UserAddressController {
 
-//    @Autowired
+    @Autowired
     private EtmallAddressService addressService;
 
     private Object validate(EtmallAddress address) {

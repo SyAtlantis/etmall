@@ -20,7 +20,7 @@ import java.util.Map;
 public class AdminConfigController {
 //    private final Log logger = LogFactory.getLog(AdminConfigController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallSystemConfigService systemConfigService;
 
     @RequiresPermissions("admin:config:mall:list")

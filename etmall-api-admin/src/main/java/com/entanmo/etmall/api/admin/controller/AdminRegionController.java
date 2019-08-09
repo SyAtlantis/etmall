@@ -22,7 +22,7 @@ import java.util.List;
 public class AdminRegionController {
 //    private final Log logger = LogFactory.getLog(AdminRegionController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallRegionService regionService;
 
     @GetMapping("/clist")

@@ -1,5 +1,7 @@
 package com.entanmo.etmall.api.admin.controller;
 
+import com.entanmo.etmall.api.admin.permissions.Permission;
+import com.entanmo.etmall.api.admin.permissions.PermissionUtil;
 import com.entanmo.etmall.core.util.IpUtil;
 import com.entanmo.etmall.core.util.JacksonUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
@@ -14,6 +16,8 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -30,14 +34,19 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.ADMIN_INVALID
 public class AdminAuthController {
 //    private final Log logger = LogFactory.getLog(AdminAuthController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallAdminService adminService;
-//    @Autowired
+    @Autowired
     private EtmallRoleService roleService;
-//    @Autowired
+    @Autowired
     private EtmallPermissionService permissionService;
 //    @Autowired
 //    private LogHelper logHelper;
+
+    @Autowired
+    private ApplicationContext context;
+
+    private HashMap<String, String> systemPermissionsMap = null;
 
     /*
      *  { username : value, password : value }
@@ -119,35 +128,32 @@ public class AdminAuthController {
         return ResponseUtil.ok(data);
     }
 
-//    @Autowired
-//    private ApplicationContext context;
-//    private HashMap<String, String> systemPermissionsMap = null;
-//
+    //
     private Collection<String> toApi(Set<String> permissions) {
-//        if (systemPermissionsMap == null) {
-//            systemPermissionsMap = new HashMap<>();
-//            final String basicPackage = "org.linlinjava.Etmall.admin";
-//            List<Permission> systemPermissions = PermissionUtil.listPermission(context, basicPackage);
-//            for (Permission permission : systemPermissions) {
-//                String perm = permission.getRequiresPermissions().value()[0];
-//                String api = permission.getApi();
-//                systemPermissionsMap.put(perm, api);
-//            }
-//        }
+        if (systemPermissionsMap == null) {
+            systemPermissionsMap = new HashMap<>();
+            final String basicPackage = "org.linlinjava.Etmall.admin";
+            List<Permission> systemPermissions = PermissionUtil.listPermission(context, basicPackage);
+            for (Permission permission : systemPermissions) {
+                String perm = permission.getRequiresPermissions().value()[0];
+                String api = permission.getApi();
+                systemPermissionsMap.put(perm, api);
+            }
+        }
 
         Collection<String> apis = new HashSet<>();
-//        for (String perm : permissions) {
-//            String api = systemPermissionsMap.get(perm);
-//            apis.add(api);
-//
-//            if (perm.equals("*")) {
-//                apis.clear();
-//                apis.add("*");
-//                return apis;
-//                //                return systemPermissionsMap.values();
-//
-//            }
-//        }
+        for (String perm : permissions) {
+            String api = systemPermissionsMap.get(perm);
+            apis.add(api);
+
+            if (perm.equals("*")) {
+                apis.clear();
+                apis.add("*");
+                return apis;
+                //                return systemPermissionsMap.values();
+
+            }
+        }
         return apis;
     }
 

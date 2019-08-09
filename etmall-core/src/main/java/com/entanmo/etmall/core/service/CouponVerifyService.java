@@ -6,10 +6,12 @@ import com.entanmo.etmall.db.domain.EtmallCouponUser;
 import com.entanmo.etmall.db.service.EtmallCouponService;
 import com.entanmo.etmall.db.service.EtmallCouponUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Service
 public class CouponVerifyService {
 
     @Autowired

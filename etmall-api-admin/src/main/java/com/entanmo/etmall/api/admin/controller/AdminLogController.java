@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminLogController {
 //    private final Log logger = LogFactory.getLog(AdminLogController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallLogService logService;
 
     @RequiresPermissions("admin:log:list")

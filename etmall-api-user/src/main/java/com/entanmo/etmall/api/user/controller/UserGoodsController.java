@@ -33,43 +33,43 @@ import java.util.concurrent.*;
 public class UserGoodsController {
 //	private final Log logger = LogFactory.getLog(UserGoodsController.class);
 
-//	@Autowired
+    @Autowired
 	private EtmallGoodsService goodsService;
 
-//	@Autowired
+    @Autowired
 	private EtmallGoodsProductService productService;
 
-//	@Autowired
+    @Autowired
 	private EtmallIssueService goodsIssueService;
 
-//	@Autowired
+    @Autowired
 	private EtmallGoodsAttributeService goodsAttributeService;
 
-//	@Autowired
+    @Autowired
 	private EtmallBrandService brandService;
 
-//	@Autowired
+    @Autowired
 	private EtmallCommentService commentService;
 
-//	@Autowired
+    @Autowired
 	private EtmallUserService userService;
 
-//	@Autowired
+    @Autowired
 	private EtmallCollectService collectService;
 
-//	@Autowired
+    @Autowired
 	private EtmallFootprintService footprintService;
 
-//	@Autowired
+    @Autowired
 	private EtmallCategoryService categoryService;
 
-//	@Autowired
+    @Autowired
 	private EtmallSearchHistoryService searchHistoryService;
 
-//	@Autowired
+    @Autowired
 	private EtmallGoodsSpecificationService goodsSpecificationService;
 
-//	@Autowired
+    @Autowired
 	private EtmallGrouponRulesService rulesService;
 
 	private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);

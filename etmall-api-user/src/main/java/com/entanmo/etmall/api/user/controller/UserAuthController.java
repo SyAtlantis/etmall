@@ -36,16 +36,16 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.*;
 @Validated
 public class UserAuthController {
 
-//    @Autowired
+    @Autowired
     private EtmallUserService userService;
 
-//    @Autowired
+    @Autowired
     private WxMaService wxService;
 
-//    @Autowired
+    @Autowired
     private NotifyService notifyService;
 
-//    @Autowired
+    @Autowired
     private CouponAssignService couponAssignService;
 
     /**

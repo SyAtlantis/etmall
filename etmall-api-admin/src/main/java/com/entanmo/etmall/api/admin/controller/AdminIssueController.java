@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminIssueController {
     private final Log logger = LogFactory.getLog(AdminIssueController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallIssueService issueService;
 
     @RequiresPermissions("admin:issue:list")

@@ -12,6 +12,7 @@ import com.entanmo.etmall.db.constant.CouponConstant;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,9 @@ import java.util.List;
 public class AdminCouponController {
     private final Log logger = LogFactory.getLog(AdminCouponController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCouponService couponService;
-//    @Autowired
+    @Autowired
     private EtmallCouponUserService couponUserService;
 
     @RequiresPermissions("admin:coupon:list")

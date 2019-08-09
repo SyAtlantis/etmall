@@ -10,6 +10,7 @@ import com.entanmo.etmall.core.vo.CatVo;
 import com.entanmo.etmall.db.domain.*;
 import com.entanmo.etmall.db.service.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -29,17 +30,17 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.GOODS_NAME_EX
 public class AdminGoodsController {
 //    private final Log logger = LogFactory.getLog(AdminGoodsController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsSpecificationService specificationService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsAttributeService attributeService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsProductService productService;
-//    @Autowired
+    @Autowired
     private EtmallCategoryService categoryService;
-//    @Autowired
+    @Autowired
     private EtmallBrandService brandService;
 
     private QCodeService qCodeService;

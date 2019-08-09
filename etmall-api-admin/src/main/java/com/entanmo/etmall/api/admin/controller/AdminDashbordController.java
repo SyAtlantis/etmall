@@ -22,13 +22,13 @@ import java.util.Map;
 public class AdminDashbordController {
     private final Log logger = LogFactory.getLog(AdminDashbordController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallUserService userService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsProductService productService;
-//    @Autowired
+    @Autowired
     private EtmallOrderService orderService;
 
     @GetMapping("")

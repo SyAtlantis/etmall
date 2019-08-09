@@ -21,7 +21,7 @@ import java.util.List;
 public class AdminCommentController {
 //    private final Log logger = LogFactory.getLog(AdminCommentController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCommentService commentService;
 
     @RequiresPermissions("admin:comment:list")

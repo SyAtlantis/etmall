@@ -30,27 +30,28 @@ import java.util.concurrent.*;
 @RequestMapping("/user/home")
 @Validated
 public class UserHomeController {
-    private final Log logger = LogFactory.getLog(UserHomeController.class);
 
-//    @Autowired
+//    private final Log logger = LogFactory.getLog(UserHomeController.class);
+
+    @Autowired
     private EtmallAdService adService;
 
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
-//    @Autowired
+    @Autowired
     private EtmallBrandService brandService;
 
-//    @Autowired
+    @Autowired
     private EtmallTopicService topicService;
 
-//    @Autowired
+    @Autowired
     private EtmallCategoryService categoryService;
 
-//    @Autowired
+    @Autowired
     private UserGrouponRuleService grouponService;
 
-//    @Autowired
+    @Autowired
     private EtmallCouponService couponService;
 
     private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);
@@ -72,6 +73,7 @@ public class UserHomeController {
 
     /**
      * 首页数据
+     *
      * @param userId 当用户已经登录时，非空。为登录状态为null
      * @return 首页数据
      */
@@ -88,12 +90,11 @@ public class UserHomeController {
         Callable<List> channelListCallable = () -> categoryService.queryChannel();
 
         Callable<List> couponListCallable;
-        if(userId == null){
+        if (userId == null) {
             couponListCallable = () -> couponService.queryList(0, 3);
         } else {
-            couponListCallable = () -> couponService.queryAvailableList(userId,0, 3);
+            couponListCallable = () -> couponService.queryAvailableList(userId, 0, 3);
         }
-
 
         Callable<List> newGoodsListCallable = () -> goodsService.queryByNew(0, SystemConfig.getNewLimit());
 
@@ -141,10 +142,9 @@ public class UserHomeController {
             entity.put("floorGoodsList", floorGoodsListTask.get());
             //缓存数据
             HomeCacheService.loadData(HomeCacheService.INDEX, entity);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             executorService.shutdown();
         }
         return ResponseUtil.ok(entity);

@@ -22,7 +22,7 @@ import java.util.List;
 public class AdminHistoryController {
 //    private final Log logger = LogFactory.getLog(AdminHistoryController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallSearchHistoryService searchHistoryService;
 
     @RequiresPermissions("admin:history:list")

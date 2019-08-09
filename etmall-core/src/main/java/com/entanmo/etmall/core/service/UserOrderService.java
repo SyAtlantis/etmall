@@ -21,6 +21,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -36,48 +37,50 @@ import java.util.Map;
 
 import static com.entanmo.etmall.db.constant.UserResponseConstant.*;
 
+@Service
 public class UserOrderService {
 
     private final Log logger = LogFactory.getLog(UserOrderService.class);
-    
+
+    @Autowired
     private EtmallUserService userService;
-    
+    @Autowired
     private EtmallOrderService orderService;
-    
+    @Autowired
     private EtmallOrderGoodsService orderGoodsService;
-    
+    @Autowired
     private EtmallAddressService addressService;
-    
+    @Autowired
     private EtmallCartService cartService;
-    
+    @Autowired
     private EtmallRegionService regionService;
-    
+    @Autowired
     private EtmallGoodsProductService productService;
-    
+    @Autowired
     private WxPayService wxPayService;
-    
+    @Autowired
     private NotifyService notifyService;
-    
+    @Autowired
     private EtmallUserFormIdService formIdService;
-    
+    @Autowired
     private EtmallGrouponRulesService grouponRulesService;
-    
+    @Autowired
     private EtmallGrouponService grouponService;
-    
+    @Autowired
     private QCodeService qCodeService;
-    
+//    @Autowired
     private ExpressService expressService;
-    
+    @Autowired
     private EtmallCommentService commentService;
-    
+    @Autowired
     private EtmallCouponService couponService;
-    
+    @Autowired
     private EtmallCouponUserService couponUserService;
-    
+    @Autowired
     private CouponVerifyService couponVerifyService;
-
+//    @Autowired
     private OrderService m_orderService;
-
+//    @Autowired
     private GoodsProductService m_productService;
 
     /**

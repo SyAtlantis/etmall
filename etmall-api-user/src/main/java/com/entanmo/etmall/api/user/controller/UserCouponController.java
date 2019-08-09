@@ -38,15 +38,15 @@ import java.util.List;
 public class UserCouponController {
 //    private final Log logger = LogFactory.getLog(UserCouponController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCouponService couponService;
-//    @Autowired
+    @Autowired
     private EtmallCouponUserService couponUserService;
-//    @Autowired
+    @Autowired
     private EtmallGrouponRulesService grouponRulesService;
-//    @Autowired
+    @Autowired
     private EtmallCartService cartService;
-//    @Autowired
+    @Autowired
     private CouponVerifyService couponVerifyService;
 
     /**
@@ -67,11 +67,11 @@ public class UserCouponController {
      */
     @GetMapping("mylist")
     public Object mylist(@LoginUser Integer userId,
-                       @NotNull Short status,
-                       @RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer limit,
-                       @Sort @RequestParam(defaultValue = "add_time") String sort,
-                       @Order @RequestParam(defaultValue = "desc") String order) {
+                         @NotNull Short status,
+                         @RequestParam(defaultValue = "1") Integer page,
+                         @RequestParam(defaultValue = "10") Integer limit,
+                         @Sort @RequestParam(defaultValue = "add_time") String sort,
+                         @Order @RequestParam(defaultValue = "desc") String order) {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
@@ -83,7 +83,7 @@ public class UserCouponController {
 
     private List<CouponVo> change(List<EtmallCouponUser> couponList) {
         List<CouponVo> couponVoList = new ArrayList<>(couponList.size());
-        for(EtmallCouponUser couponUser : couponList){
+        for (EtmallCouponUser couponUser : couponList) {
             Integer couponId = couponUser.getCouponId();
             EtmallCoupon coupon = couponService.findById(couponId);
             CouponVo couponVo = new CouponVo();
@@ -161,7 +161,7 @@ public class UserCouponController {
      * 优惠券领取
      *
      * @param userId 用户ID
-     * @param body 请求内容， { couponId: xxx }
+     * @param body   请求内容， { couponId: xxx }
      * @return 操作结果
      */
     @PostMapping("receive")
@@ -171,48 +171,45 @@ public class UserCouponController {
         }
 
         Integer couponId = JacksonUtil.parseInteger(body, "couponId");
-        if(couponId == null){
+        if (couponId == null) {
             return ResponseUtil.badArgument();
         }
 
         EtmallCoupon coupon = couponService.findById(couponId);
-        if(coupon == null){
+        if (coupon == null) {
             return ResponseUtil.badArgumentValue();
         }
 
         // 当前已领取数量和总数量比较
         Integer total = coupon.getTotal();
         Integer totalCoupons = couponUserService.countCoupon(couponId);
-        if((total != 0) && (totalCoupons >= total)){
+        if ((total != 0) && (totalCoupons >= total)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已领完");
         }
 
         // 当前用户已领取数量和用户限领数量比较
         Integer limit = coupon.getLimit().intValue();
         Integer userCounpons = couponUserService.countUserAndCoupon(userId, couponId);
-        if((limit != 0) && (userCounpons >= limit)){
+        if ((limit != 0) && (userCounpons >= limit)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已经领取过");
         }
 
         // 优惠券分发类型
         // 例如注册赠券类型的优惠券不能领取
         Short type = coupon.getType();
-        if(type.equals(CouponConstant.TYPE_REGISTER)){
+        if (type.equals(CouponConstant.TYPE_REGISTER)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "新用户优惠券自动发送");
-        }
-        else if(type.equals(CouponConstant.TYPE_CODE)){
+        } else if (type.equals(CouponConstant.TYPE_CODE)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券只能兑换");
-        }
-        else if(!type.equals(CouponConstant.TYPE_COMMON)){
+        } else if (!type.equals(CouponConstant.TYPE_COMMON)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券类型不支持");
         }
 
         // 优惠券状态，已下架或者过期不能领取
         Short status = coupon.getStatus();
-        if(status.equals(CouponConstant.STATUS_OUT)){
+        if (status.equals(CouponConstant.STATUS_OUT)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已领完");
-        }
-        else if(status.equals(CouponConstant.STATUS_EXPIRED)){
+        } else if (status.equals(CouponConstant.STATUS_EXPIRED)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券已经过期");
         }
 
@@ -224,8 +221,7 @@ public class UserCouponController {
         if (timeType.equals(CouponConstant.TIME_TYPE_TIME)) {
             couponUser.setStartTime(coupon.getStartTime());
             couponUser.setEndTime(coupon.getEndTime());
-        }
-        else{
+        } else {
             LocalDateTime now = LocalDateTime.now();
             couponUser.setStartTime(now);
             couponUser.setEndTime(now.plusDays(coupon.getDays()));
@@ -245,12 +241,12 @@ public class UserCouponController {
         }
 
         String code = JacksonUtil.parseString(body, "code");
-        if(code == null){
+        if (code == null) {
             return ResponseUtil.badArgument();
         }
 
         EtmallCoupon coupon = couponService.findByCode(code);
-        if(coupon == null){
+        if (coupon == null) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_CODE_INVALID, "优惠券不正确");
         }
         Integer couponId = coupon.getId();
@@ -258,36 +254,33 @@ public class UserCouponController {
         // 当前已领取数量和总数量比较
         Integer total = coupon.getTotal();
         Integer totalCoupons = couponUserService.countCoupon(couponId);
-        if((total != 0) && (totalCoupons >= total)){
+        if ((total != 0) && (totalCoupons >= total)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已兑换");
         }
 
         // 当前用户已领取数量和用户限领数量比较
         Integer limit = coupon.getLimit().intValue();
         Integer userCounpons = couponUserService.countUserAndCoupon(userId, couponId);
-        if((limit != 0) && (userCounpons >= limit)){
+        if ((limit != 0) && (userCounpons >= limit)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已兑换");
         }
 
         // 优惠券分发类型
         // 例如注册赠券类型的优惠券不能领取
         Short type = coupon.getType();
-        if(type.equals(CouponConstant.TYPE_REGISTER)){
+        if (type.equals(CouponConstant.TYPE_REGISTER)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "新用户优惠券自动发送");
-        }
-        else if(type.equals(CouponConstant.TYPE_COMMON)){
+        } else if (type.equals(CouponConstant.TYPE_COMMON)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券只能领取，不能兑换");
-        }
-        else if(!type.equals(CouponConstant.TYPE_CODE)){
+        } else if (!type.equals(CouponConstant.TYPE_CODE)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券类型不支持");
         }
 
         // 优惠券状态，已下架或者过期不能领取
         Short status = coupon.getStatus();
-        if(status.equals(CouponConstant.STATUS_OUT)){
+        if (status.equals(CouponConstant.STATUS_OUT)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_EXCEED_LIMIT, "优惠券已兑换");
-        }
-        else if(status.equals(CouponConstant.STATUS_EXPIRED)){
+        } else if (status.equals(CouponConstant.STATUS_EXPIRED)) {
             return ResponseUtil.fail(UserResponseConstant.COUPON_RECEIVE_FAIL, "优惠券已经过期");
         }
 
@@ -299,8 +292,7 @@ public class UserCouponController {
         if (timeType.equals(CouponConstant.TIME_TYPE_TIME)) {
             couponUser.setStartTime(coupon.getStartTime());
             couponUser.setEndTime(coupon.getEndTime());
-        }
-        else{
+        } else {
             LocalDateTime now = LocalDateTime.now();
             couponUser.setStartTime(now);
             couponUser.setEndTime(now.plusDays(coupon.getDays()));

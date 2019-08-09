@@ -11,6 +11,7 @@ import com.entanmo.etmall.db.service.EtmallAdminService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.*;
 @Validated
 public class AdminAdminController {
 
+    @Autowired
     private EtmallAdminService adminService;
 
     private Object validate(EtmallAdmin admin) {

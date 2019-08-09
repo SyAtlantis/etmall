@@ -31,9 +31,9 @@ import java.util.Map;
 public class UserCollectController {
 //    private final Log logger = LogFactory.getLog(UserCollectController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallCollectService collectService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
     /**

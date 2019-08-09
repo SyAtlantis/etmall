@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminBrandController {
     private final Log logger = LogFactory.getLog(AdminBrandController.class);
 
-//    @Autowired
+    @Autowired
     private EtmallBrandService brandService;
 
     @RequiresPermissions("admin:brand:list")
