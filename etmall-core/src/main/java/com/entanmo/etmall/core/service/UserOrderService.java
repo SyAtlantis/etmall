@@ -44,43 +44,62 @@ public class UserOrderService {
 
     @Autowired
     private EtmallUserService userService;
+
     @Autowired
     private EtmallOrderService orderService;
+
     @Autowired
     private EtmallOrderGoodsService orderGoodsService;
+
     @Autowired
     private EtmallAddressService addressService;
+
     @Autowired
     private EtmallCartService cartService;
+
     @Autowired
     private EtmallRegionService regionService;
+
     @Autowired
     private EtmallGoodsProductService productService;
+
     @Autowired
     private WxPayService wxPayService;
+
     @Autowired
     private NotifyService notifyService;
+
     @Autowired
     private EtmallUserFormIdService formIdService;
+
     @Autowired
     private EtmallGrouponRulesService grouponRulesService;
+
     @Autowired
     private EtmallGrouponService grouponService;
+
     @Autowired
     private QCodeService qCodeService;
+
 //    @Autowired
     private ExpressService expressService;
+
     @Autowired
     private EtmallCommentService commentService;
+
     @Autowired
     private EtmallCouponService couponService;
+
     @Autowired
     private EtmallCouponUserService couponUserService;
+
     @Autowired
     private CouponVerifyService couponVerifyService;
-//    @Autowired
+
+    @Autowired
     private OrderService m_orderService;
-//    @Autowired
+
+    @Autowired
     private GoodsProductService m_productService;
 
     /**

@@ -12,11 +12,11 @@ import java.util.*;
 
 public class JwtHelper {
 	// 秘钥
-	private static final String SECRET = "X-Litemall-Token";
+	private static final String SECRET = "X-Etmall-Token";
 	// 签名是有谁生成
-	private static final String ISSUSER = "LITEMALL";
+	private static final String ISSUSER = "ETMALL";
 	// 签名的主题
-	private static final String SUBJECT = "this is litemall token";
+	private static final String SUBJECT = "this is etmall token";
 	// 签名的观众
 	private static final String AUDIENCE = "MINIAPP";
 	
