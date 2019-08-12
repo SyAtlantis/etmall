@@ -28,7 +28,7 @@ import java.util.concurrent.*;
  * 商品服务
  */
 @RestController
-@RequestMapping("/wx/goods")
+@RequestMapping("/user/goods")
 @Validated
 public class UserGoodsController {
 //	private final Log logger = LogFactory.getLog(UserGoodsController.class);

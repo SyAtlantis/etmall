@@ -25,10 +25,10 @@ import java.util.Map;
  * 用户评论服务
  */
 @RestController
-@RequestMapping("/wx/comment")
+@RequestMapping("/user/comment")
 @Validated
 public class UserCommentController {
-    private final Log logger = LogFactory.getLog(UserCommentController.class);
+//    private final Log logger = LogFactory.getLog(UserCommentController.class);
 
     @Autowired
     private EtmallCommentService commentService;

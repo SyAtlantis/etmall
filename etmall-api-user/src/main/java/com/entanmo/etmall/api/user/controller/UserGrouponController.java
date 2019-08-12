@@ -38,7 +38,7 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.ORDER_UNKNOWN;
  * 需要注意这里团购规则和团购活动的关系和区别。
  */
 @RestController
-@RequestMapping("/wx/groupon")
+@RequestMapping("/user/groupon")
 @Validated
 public class UserGrouponController {
 //    private final Log logger = LogFactory.getLog(UserGrouponController.class);

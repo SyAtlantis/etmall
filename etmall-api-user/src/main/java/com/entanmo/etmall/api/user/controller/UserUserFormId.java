@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/user/formid")
 @Validated
 public class UserUserFormId {
-    private final Log logger = LogFactory.getLog(UserUserFormId.class);
+//    private final Log logger = LogFactory.getLog(UserUserFormId.class);
 
     @Autowired
     private EtmallUserService userService;

@@ -23,7 +23,7 @@ public class EtmallCouponService {
 
     @Resource
     private EtmallCouponMapper couponMapper;
-//    @Resource
+    @Resource
     private EtmallCouponUserMapper couponUserMapper;
 
     private Column[] result = new Column[]{Column.id, Column.name, Column.desc, Column.tag,

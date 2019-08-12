@@ -13,19 +13,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@Service
+@Service
 public class OrderService {
 
     @Resource
-    private IOrder orderMapper;
-
-    @Resource
     private EtmallOrderMapper EtmallOrderMapper;
+//    @Resource
+    private IOrder iOrder;
+
 
     public int updateWithOptimisticLocker(EtmallOrder order) {
         LocalDateTime preUpdateTime = order.getUpdateTime();
         order.setUpdateTime(LocalDateTime.now());
-        return orderMapper.updateWithOptimisticLocker(preUpdateTime, order);
+        return iOrder.updateWithOptimisticLocker(preUpdateTime, order);
     }
 
     public Map<Object, Object> orderInfo(Integer userId) {

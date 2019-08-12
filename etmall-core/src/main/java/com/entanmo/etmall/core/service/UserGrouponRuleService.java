@@ -18,11 +18,11 @@ import java.util.List;
 public class UserGrouponRuleService {
 //    private final Log logger = LogFactory.getLog(UserGrouponRuleService.class);
 
-//    @Autowired
+    @Autowired
     private EtmallGrouponRulesService grouponRulesService;
-//    @Autowired
+    @Autowired
     private EtmallGrouponService grouponService;
-//    @Autowired
+    @Autowired
     private EtmallGoodsService goodsService;
 
 

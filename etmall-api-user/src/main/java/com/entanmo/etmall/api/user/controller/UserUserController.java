@@ -23,7 +23,7 @@ import java.util.Map;
 public class UserUserController {
 //    private final Log logger = LogFactory.getLog(UserUserController.class);
 
-//    @Autowired
+    @Autowired
     private OrderService orderService;
 
     /**
