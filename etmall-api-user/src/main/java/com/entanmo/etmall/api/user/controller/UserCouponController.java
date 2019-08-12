@@ -40,12 +40,16 @@ public class UserCouponController {
 
     @Autowired
     private EtmallCouponService couponService;
+
     @Autowired
     private EtmallCouponUserService couponUserService;
+
     @Autowired
     private EtmallGrouponRulesService grouponRulesService;
+
     @Autowired
     private EtmallCartService cartService;
+
     @Autowired
     private CouponVerifyService couponVerifyService;
 

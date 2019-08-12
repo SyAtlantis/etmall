@@ -34,18 +34,25 @@ public class UserCartController {
 
     @Autowired
     private EtmallCartService cartService;
+
     @Autowired
     private EtmallGoodsService goodsService;
+
     @Autowired
     private EtmallGoodsProductService productService;
+
     @Autowired
     private EtmallAddressService addressService;
+
     @Autowired
     private EtmallGrouponRulesService grouponRulesService;
-    @Autowired
-    private EtmallCouponService couponService;
+
+//    @Autowired
+//    private EtmallCouponService couponService;
+
     @Autowired
     private EtmallCouponUserService couponUserService;
+
     @Autowired
     private CouponVerifyService couponVerifyService;
 

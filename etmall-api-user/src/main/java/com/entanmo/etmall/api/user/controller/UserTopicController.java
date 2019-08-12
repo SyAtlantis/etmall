@@ -33,6 +33,7 @@ public class UserTopicController {
 
     @Autowired
     private EtmallTopicService topicService;
+
     @Autowired
     private EtmallGoodsService goodsService;
 

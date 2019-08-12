@@ -45,21 +45,29 @@ public class AdminOrderController {
 
     @Autowired
     private EtmallOrderGoodsService orderGoodsService;
+
     @Autowired
     private EtmallOrderService orderService;
+
     @Autowired
     private EtmallUserService userService;
+
     @Autowired
     private EtmallCommentService commentService;
+
     @Autowired
     private WxPayService wxPayService;
+
     @Autowired
     private NotifyService notifyService;
-//    @Autowired
+
+    @Autowired
     private GoodsProductService m_productService;
-//    @Autowired
+
+    @Autowired
     private OrderService m_orderService;
-//    @Autowired
+
+    @Autowired
     private UserService m_userService;
 
 //    @Autowired

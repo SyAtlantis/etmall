@@ -32,10 +32,13 @@ public class UserCommentController {
 
     @Autowired
     private EtmallCommentService commentService;
+
     @Autowired
     private EtmallGoodsService goodsService;
+
     @Autowired
     private EtmallTopicService topicService;
+
     @Autowired
     private UserInfoService userInfoService;
 

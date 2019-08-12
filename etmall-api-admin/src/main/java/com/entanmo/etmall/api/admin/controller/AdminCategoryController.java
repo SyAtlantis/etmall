@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping("/admin/category")
 @Validated
 public class AdminCategoryController {
-    private final Log logger = LogFactory.getLog(AdminCategoryController.class);
+//    private final Log logger = LogFactory.getLog(AdminCategoryController.class);
 
     @Autowired
     private EtmallCategoryService categoryService;

@@ -36,10 +36,13 @@ public class AdminAuthController {
 
     @Autowired
     private EtmallAdminService adminService;
+
     @Autowired
     private EtmallRoleService roleService;
+
     @Autowired
     private EtmallPermissionService permissionService;
+
 //    @Autowired
 //    private LogHelper logHelper;
 

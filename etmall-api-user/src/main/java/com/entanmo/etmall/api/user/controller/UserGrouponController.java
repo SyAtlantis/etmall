@@ -45,22 +45,30 @@ public class UserGrouponController {
 
     @Autowired
     private EtmallGrouponRulesService rulesService;
+
     @Autowired
     private UserGrouponRuleService wxGrouponRuleService;
+
     @Autowired
     private EtmallGrouponService grouponService;
+
     @Autowired
     private EtmallGoodsService goodsService;
+
     @Autowired
     private EtmallOrderService orderService;
+
     @Autowired
     private EtmallOrderGoodsService orderGoodsService;
+
     @Autowired
     private EtmallUserService userService;
+
     @Autowired
     private ExpressService expressService;
-    @Autowired
-    private EtmallGrouponRulesService grouponRulesService;
+
+//    @Autowired
+//    private EtmallGrouponRulesService grouponRulesService;
 
     private UserService m_userService;
     /**

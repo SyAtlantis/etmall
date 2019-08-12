@@ -36,8 +36,10 @@ public class AdminRoleController {
 
     @Autowired
     private EtmallRoleService roleService;
+
     @Autowired
     private EtmallPermissionService permissionService;
+
     @Autowired
     private EtmallAdminService adminService;
 

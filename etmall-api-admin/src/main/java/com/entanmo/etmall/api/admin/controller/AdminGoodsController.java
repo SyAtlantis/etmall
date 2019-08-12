@@ -32,14 +32,19 @@ public class AdminGoodsController {
 
     @Autowired
     private EtmallGoodsService goodsService;
+
     @Autowired
     private EtmallGoodsSpecificationService specificationService;
+
     @Autowired
     private EtmallGoodsAttributeService attributeService;
+
     @Autowired
     private EtmallGoodsProductService productService;
+
     @Autowired
     private EtmallCategoryService categoryService;
+
     @Autowired
     private EtmallBrandService brandService;
 

@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/admin/issue")
 @Validated
 public class AdminIssueController {
-    private final Log logger = LogFactory.getLog(AdminIssueController.class);
+//    private final Log logger = LogFactory.getLog(AdminIssueController.class);
 
     @Autowired
     private EtmallIssueService issueService;

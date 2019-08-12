@@ -33,6 +33,7 @@ public class UserCollectController {
 
     @Autowired
     private EtmallCollectService collectService;
+
     @Autowired
     private EtmallGoodsService goodsService;
 

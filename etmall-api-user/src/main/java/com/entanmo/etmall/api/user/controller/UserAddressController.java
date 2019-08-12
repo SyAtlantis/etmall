@@ -8,10 +8,7 @@ import com.entanmo.etmall.db.service.EtmallAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -75,7 +72,6 @@ public class UserAddressController {
         return null;
     }
 
-
     // 收货地址列表
     @GetMapping("list")
     public Object list(@LoginUser Integer userId){
@@ -101,7 +97,7 @@ public class UserAddressController {
     }
 
     // 添加或更新收货地址
-    @GetMapping("save")
+    @PostMapping("save")
     public Object save(@LoginUser Integer userId, @RequestBody EtmallAddress address){
         if (userId == null) {
             return ResponseUtil.unlogin();
@@ -130,7 +126,7 @@ public class UserAddressController {
     }
 
     // 删除收货地址
-    @GetMapping("delete")
+    @PostMapping("delete")
     public Object delete(@LoginUser Integer userId, @RequestBody EtmallAddress address){
         if (userId == null) {
             return ResponseUtil.unlogin();

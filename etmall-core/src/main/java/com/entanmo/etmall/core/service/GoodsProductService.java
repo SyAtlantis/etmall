@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-//@Service
+@Service
 public class GoodsProductService {
 
-    @Resource
+//    @Resource
     private IGoodsProduct goodsProduct;
 
     public int addStock(Integer id, Short num){

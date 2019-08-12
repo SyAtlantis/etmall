@@ -31,6 +31,7 @@ public class AdminTopicController {
 
     @Autowired
     private EtmallTopicService topicService;
+
     @Autowired
     private EtmallGoodsService goodsService;
 

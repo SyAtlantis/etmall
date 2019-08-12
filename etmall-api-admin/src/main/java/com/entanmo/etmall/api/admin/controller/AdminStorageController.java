@@ -26,8 +26,9 @@ import java.util.List;
 public class AdminStorageController {
 //    private final Log logger = LogFactory.getLog(AdminStorageController.class);
 
-//    @Autowired
+    @Autowired
     private StorageService storageService;
+
     @Autowired
     private EtmallStorageService EtmallStorageService;
 

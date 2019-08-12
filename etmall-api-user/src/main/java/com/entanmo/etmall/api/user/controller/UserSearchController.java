@@ -31,6 +31,7 @@ public class UserSearchController {
 
     @Autowired
     private EtmallKeywordService keywordsService;
+
     @Autowired
     private EtmallSearchHistoryService searchHistoryService;
 

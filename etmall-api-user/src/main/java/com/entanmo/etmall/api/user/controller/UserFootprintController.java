@@ -29,6 +29,7 @@ public class UserFootprintController {
 
     @Autowired
     private EtmallFootprintService footprintService;
+
     @Autowired
     private EtmallGoodsService goodsService;
 

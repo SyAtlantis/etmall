@@ -32,8 +32,10 @@ public class AdminGrouponController {
 
     @Autowired
     private EtmallGrouponRulesService rulesService;
+
     @Autowired
     private EtmallGoodsService goodsService;
+
     @Autowired
     private EtmallGrouponService grouponService;
 

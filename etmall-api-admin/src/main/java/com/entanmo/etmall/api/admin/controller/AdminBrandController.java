@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("/admin/brand")
 @Validated
 public class AdminBrandController {
-    private final Log logger = LogFactory.getLog(AdminBrandController.class);
+//    private final Log logger = LogFactory.getLog(AdminBrandController.class);
 
     @Autowired
     private EtmallBrandService brandService;

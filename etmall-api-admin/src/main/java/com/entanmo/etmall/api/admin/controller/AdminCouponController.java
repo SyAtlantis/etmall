@@ -28,6 +28,7 @@ public class AdminCouponController {
 
     @Autowired
     private EtmallCouponService couponService;
+
     @Autowired
     private EtmallCouponUserService couponUserService;
 

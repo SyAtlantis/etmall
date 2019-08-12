@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 public class CouponAssignService {
 
-//    @Autowired
+    @Autowired
     private EtmallCouponUserService couponUserService;
-//    @Autowired
+    @Autowired
     private EtmallCouponService couponService;
 
     /**
