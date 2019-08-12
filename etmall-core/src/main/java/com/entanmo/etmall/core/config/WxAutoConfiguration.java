@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(WxProperties.class)
-public class WxAutoConfig {
+public class WxAutoConfiguration {
     @Autowired
     private WxProperties properties;
 

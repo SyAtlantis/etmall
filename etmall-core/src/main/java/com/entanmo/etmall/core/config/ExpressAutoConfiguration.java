@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(ExpressProperties.class)
-public class ExpressAutoConfig {
+public class ExpressAutoConfiguration {
 
     private final ExpressProperties properties;
 
-    public ExpressAutoConfig(ExpressProperties properties) {
+    public ExpressAutoConfiguration(ExpressProperties properties) {
         this.properties = properties;
     }
 

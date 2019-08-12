@@ -10,13 +10,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 @EnableConfigurationProperties(StorageProperties.class)
-public class StorageAutoConfig {
+public class StorageAutoConfiguration {
 
     private final StorageProperties properties;
 
-    public StorageAutoConfig(StorageProperties properties) {
+    public StorageAutoConfiguration(StorageProperties properties) {
         this.properties = properties;
     }
 

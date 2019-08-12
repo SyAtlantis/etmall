@@ -1,4 +1,4 @@
-package com.entanmo.etmall.api.user.config;
+package com.entanmo.etmall.api.admin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,23 +17,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class UserSwagger2Config {
+public class AdminSwagger2Configuration {
     @Bean
-    public Docket wxDocket() {
+    public Docket adminDocket() {
 
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("user")
-                .apiInfo(wxApiInfo())
+                .groupName("admin")
+                .apiInfo(adminApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.entanmo.etmall.api.user.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.entanmo.etmall.api.admin.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
-    private ApiInfo wxApiInfo() {
+    private ApiInfo adminApiInfo() {
         return new ApiInfoBuilder()
-                .title("etmall-user API")
-                .description("etmall 商城用户 API")
+                .title("etmall-admin API")
+                .description("etmall管理后台API")
                 .termsOfServiceUrl("https://github.com/SyAtlantis/etmall")
                 .contact("https://github.com/SyAtlantis/etmall")
                 .version("1.0")
