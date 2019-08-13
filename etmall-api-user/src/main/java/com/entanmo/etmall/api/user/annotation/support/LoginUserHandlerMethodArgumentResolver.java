@@ -1,6 +1,7 @@
-package com.entanmo.etmall.api.user.annotation;
+package com.entanmo.etmall.api.user.annotation.support;
 
 
+import com.entanmo.etmall.api.user.annotation.LoginUser;
 import com.entanmo.etmall.core.service.UserTokenService;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -21,7 +22,6 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer container,
                                   NativeWebRequest request, WebDataBinderFactory factory) throws Exception {
 
-//        return new Integer(1);
         String token = request.getHeader(LOGIN_TOKEN_KEY);
         if (token == null || token.isEmpty()) {
             return null;

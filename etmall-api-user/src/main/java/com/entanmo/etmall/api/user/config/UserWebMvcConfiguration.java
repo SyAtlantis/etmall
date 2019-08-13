@@ -1,6 +1,6 @@
 package com.entanmo.etmall.api.user.config;
 
-import com.entanmo.etmall.api.user.annotation.LoginUserHandlerMethodArgumentResolver;
+import com.entanmo.etmall.api.user.annotation.support.LoginUserHandlerMethodArgumentResolver;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

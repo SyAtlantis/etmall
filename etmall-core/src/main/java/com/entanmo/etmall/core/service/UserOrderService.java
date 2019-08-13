@@ -40,7 +40,7 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.*;
 @Service
 public class UserOrderService {
 
-    private final Log logger = LogFactory.getLog(UserOrderService.class);
+//    private final Log logger = LogFactory.getLog(UserOrderService.class);
 
     @Autowired
     private EtmallUserService userService;
@@ -81,7 +81,7 @@ public class UserOrderService {
     @Autowired
     private QCodeService qCodeService;
 
-//    @Autowired
+    //    @Autowired
     private ExpressService expressService;
 
     @Autowired
@@ -113,7 +113,7 @@ public class UserOrderService {
      *                 3，待收货；
      *                 4，待评价。
      * @param page     分页页数
-     * @param limit     分页大小
+     * @param limit    分页大小
      * @return 订单列表
      */
     public Object list(Integer userId, Integer showType, Integer page, Integer limit, String sort, String order) {
@@ -566,12 +566,8 @@ public class UserOrderService {
         try {
             result = wxPayService.parseOrderNotifyResult(xmlResult);
 
-            if(!WxPayConstants.ResultCode.SUCCESS.equals(result.getResultCode())){
-                logger.error(xmlResult);
-                throw new WxPayException("微信通知支付失败！");
-            }
-            if(!WxPayConstants.ResultCode.SUCCESS.equals(result.getReturnCode())){
-                logger.error(xmlResult);
+            if (!WxPayConstants.ResultCode.SUCCESS.equals(result.getResultCode())) {
+//                logger.error(xmlResult);
                 throw new WxPayException("微信通知支付失败！");
             }
         } catch (WxPayException e) {
@@ -579,8 +575,8 @@ public class UserOrderService {
             return WxPayNotifyResponse.fail(e.getMessage());
         }
 
-        logger.info("处理腾讯支付平台的订单支付");
-        logger.info(result);
+//        logger.info("处理腾讯支付平台的订单支付");
+//        logger.info(result);
 
         String orderSn = result.getOutTradeNo();
         String payId = result.getTransactionId();
