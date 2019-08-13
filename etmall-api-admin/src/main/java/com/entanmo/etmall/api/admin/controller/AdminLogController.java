@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/admin/log")
 @Validated
 public class AdminLogController {
-//    private final Log logger = LogFactory.getLog(AdminLogController.class);
 
     @Autowired
     private EtmallLogService logService;

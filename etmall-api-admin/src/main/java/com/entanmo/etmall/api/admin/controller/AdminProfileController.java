@@ -22,7 +22,6 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.ADMIN_INVALID
 @RequestMapping("/admin/profile")
 @Validated
 public class AdminProfileController {
-//    private final Log logger = LogFactory.getLog(AdminProfileController.class);
 
     @Autowired
     private EtmallAdminService adminService;

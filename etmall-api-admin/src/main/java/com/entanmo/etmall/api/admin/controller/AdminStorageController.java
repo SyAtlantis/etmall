@@ -24,7 +24,6 @@ import java.util.List;
 @RequestMapping("/admin/storage")
 @Validated
 public class AdminStorageController {
-//    private final Log logger = LogFactory.getLog(AdminStorageController.class);
 
     @Autowired
     private StorageService storageService;

@@ -20,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/history")
 public class AdminHistoryController {
-//    private final Log logger = LogFactory.getLog(AdminHistoryController.class);
 
     @Autowired
     private EtmallSearchHistoryService searchHistoryService;

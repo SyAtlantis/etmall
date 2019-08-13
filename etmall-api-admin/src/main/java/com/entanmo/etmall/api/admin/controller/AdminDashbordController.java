@@ -20,7 +20,6 @@ import java.util.Map;
 @RequestMapping("/admin/dashboard")
 @Validated
 public class AdminDashbordController {
-//    private final Log logger = LogFactory.getLog(AdminDashbordController.class);
 
     @Autowired
     private EtmallUserService userService;

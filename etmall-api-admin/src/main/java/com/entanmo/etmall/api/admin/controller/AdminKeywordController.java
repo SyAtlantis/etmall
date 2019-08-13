@@ -21,7 +21,6 @@ import java.util.List;
 @RequestMapping("/admin/keyword")
 @Validated
 public class AdminKeywordController {
-//    private final Log logger = LogFactory.getLog(AdminKeywordController.class);
 
     @Autowired
     private EtmallKeywordService keywordService;

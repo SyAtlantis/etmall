@@ -4,6 +4,7 @@ import com.entanmo.etmall.api.admin.permissions.Permission;
 import com.entanmo.etmall.api.admin.permissions.PermissionUtil;
 import com.entanmo.etmall.core.util.IpUtil;
 import com.entanmo.etmall.core.util.JacksonUtil;
+import com.entanmo.etmall.core.util.LogHelper;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.db.domain.EtmallAdmin;
 import com.entanmo.etmall.db.service.EtmallAdminService;
@@ -32,7 +33,6 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.ADMIN_INVALID
 @RequestMapping("/admin/auth")
 @Validated
 public class AdminAuthController {
-//    private final Log logger = LogFactory.getLog(AdminAuthController.class);
 
     @Autowired
     private EtmallAdminService adminService;
@@ -43,8 +43,8 @@ public class AdminAuthController {
     @Autowired
     private EtmallPermissionService permissionService;
 
-//    @Autowired
-//    private LogHelper logHelper;
+    @Autowired
+    private LogHelper logHelper;
 
     @Autowired
     private ApplicationContext context;
@@ -67,14 +67,14 @@ public class AdminAuthController {
         try {
             currentUser.login(new UsernamePasswordToken(username, password));
         } catch (UnknownAccountException uae) {
-//            logHelper.logAuthFail("登录", "用户帐号或密码不正确");
+            logHelper.logAuthFail("登录", "用户帐号或密码不正确");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
         } catch (LockedAccountException lae) {
-//            logHelper.logAuthFail("登录", "用户帐号已锁定不可用");
+            logHelper.logAuthFail("登录", "用户帐号已锁定不可用");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
 
         } catch (AuthenticationException ae) {
-//            logHelper.logAuthFail("登录", "认证失败");
+            logHelper.logAuthFail("登录", "认证失败");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "认证失败");
         }
 
@@ -84,7 +84,7 @@ public class AdminAuthController {
         admin.setLastLoginTime(LocalDateTime.now());
         adminService.updateById(admin);
 
-//        logHelper.logAuthSucceed("登录");
+        logHelper.logAuthSucceed("登录");
 
         // userInfo
         Map<String, Object> adminInfo = new HashMap<String, Object>();
@@ -105,7 +105,7 @@ public class AdminAuthController {
     public Object logout() {
         Subject currentUser = SecurityUtils.getSubject();
 
-//        logHelper.logAuthSucceed("退出");
+        logHelper.logAuthSucceed("退出");
         currentUser.logout();
         return ResponseUtil.ok();
     }
@@ -131,7 +131,6 @@ public class AdminAuthController {
         return ResponseUtil.ok(data);
     }
 
-    //
     private Collection<String> toApi(Set<String> permissions) {
         if (systemPermissionsMap == null) {
             systemPermissionsMap = new HashMap<>();

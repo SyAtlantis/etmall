@@ -32,7 +32,6 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.ROLE_USER_EXI
 @RequestMapping("/admin/role")
 @Validated
 public class AdminRoleController {
-//    private final Log logger = LogFactory.getLog(AdminRoleController.class);
 
     @Autowired
     private EtmallRoleService roleService;

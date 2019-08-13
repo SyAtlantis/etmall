@@ -18,7 +18,6 @@ import java.util.Map;
 @RequestMapping("/admin/config")
 @Validated
 public class AdminConfigController {
-//    private final Log logger = LogFactory.getLog(AdminConfigController.class);
 
     @Autowired
     private EtmallSystemConfigService systemConfigService;

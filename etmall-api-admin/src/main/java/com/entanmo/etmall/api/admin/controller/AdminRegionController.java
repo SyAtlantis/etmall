@@ -20,7 +20,6 @@ import java.util.List;
 @RequestMapping("/admin/region")
 @Validated
 public class AdminRegionController {
-//    private final Log logger = LogFactory.getLog(AdminRegionController.class);
 
     @Autowired
     private EtmallRegionService regionService;

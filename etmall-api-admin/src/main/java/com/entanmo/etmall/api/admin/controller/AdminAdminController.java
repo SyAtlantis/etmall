@@ -1,6 +1,7 @@
 package com.entanmo.etmall.api.admin.controller;
 
 import com.entanmo.etmall.api.admin.annotation.RequiresPermissionsDesc;
+import com.entanmo.etmall.core.util.LogHelper;
 import com.entanmo.etmall.core.util.RegexUtil;
 import com.entanmo.etmall.core.util.ResponseUtil;
 import com.entanmo.etmall.core.util.bcrypt.BCryptPasswordEncoder;
@@ -29,6 +30,9 @@ public class AdminAdminController {
 
     @Autowired
     private EtmallAdminService adminService;
+
+    @Autowired
+    private LogHelper logHelper;
 
     private Object validate(EtmallAdmin admin) {
         String name = admin.getUsername();
@@ -77,7 +81,7 @@ public class AdminAdminController {
         String encodedPassword = encoder.encode(rawPassword);
         admin.setPassword(encodedPassword);
         adminService.add(admin);
-//        logHelper.logAuthSucceed("添加管理员", username);
+        logHelper.logAuthSucceed("添加管理员", username);
         return ResponseUtil.ok(admin);
     }
 
@@ -110,7 +114,7 @@ public class AdminAdminController {
             return ResponseUtil.updatedDataFailed();
         }
 
-//        logHelper.logAuthSucceed("编辑管理员", admin.getUsername());
+        logHelper.logAuthSucceed("编辑管理员", admin.getUsername());
         return ResponseUtil.ok(admin);
     }
 
@@ -131,7 +135,7 @@ public class AdminAdminController {
         }
 
         adminService.deleteById(anotherAdminId);
-//        logHelper.logAuthSucceed("删除管理员", admin.getUsername());
+        logHelper.logAuthSucceed("删除管理员", admin.getUsername());
         return ResponseUtil.ok();
     }
 }

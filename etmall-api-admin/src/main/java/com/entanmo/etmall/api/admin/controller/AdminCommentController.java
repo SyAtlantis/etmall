@@ -19,7 +19,6 @@ import java.util.List;
 @RequestMapping("/admin/comment")
 @Validated
 public class AdminCommentController {
-//    private final Log logger = LogFactory.getLog(AdminCommentController.class);
 
     @Autowired
     private EtmallCommentService commentService;

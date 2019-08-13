@@ -28,7 +28,6 @@ import static com.entanmo.etmall.db.constant.AdminResponseConstant.GOODS_NAME_EX
 @RequestMapping("/admin/goods")
 @Validated
 public class AdminGoodsController {
-//    private final Log logger = LogFactory.getLog(AdminGoodsController.class);
 
     @Autowired
     private EtmallGoodsService goodsService;
@@ -48,6 +47,7 @@ public class AdminGoodsController {
     @Autowired
     private EtmallBrandService brandService;
 
+    @Autowired
     private QCodeService qCodeService;
 
     private Object validate(GoodsAllinone goodsAllinone) {

@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/admin/collect")
 @Validated
 public class AdminCollectController {
-//    private final Log logger = LogFactory.getLog(AdminCollectController.class);
 
     @Autowired
     private EtmallCollectService collectService;

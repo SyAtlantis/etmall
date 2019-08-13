@@ -20,7 +20,6 @@ import java.util.Map;
 @RequestMapping("/admin/stat")
 @Validated
 public class AdminStatController {
-//    private final Log logger = LogFactory.getLog(AdminStatController.class);
 
     @Autowired
     private StatService statService;

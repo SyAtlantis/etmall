@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/admin/feedback")
 @Validated
 public class AdminFeedbackController {
-//    private final Log logger = LogFactory.getLog(AdminFeedbackController.class);
 
     @Autowired
     private EtmallFeedbackService feedbackService;
