@@ -25,7 +25,6 @@ import java.util.Map;
 @RequestMapping("/user/footprint")
 @Validated
 public class UserFootprintController {
-//    private final Log logger = LogFactory.getLog(UserFootprintController.class);
 
     @Autowired
     private EtmallFootprintService footprintService;

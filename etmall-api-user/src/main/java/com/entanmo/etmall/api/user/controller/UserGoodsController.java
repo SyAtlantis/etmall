@@ -31,7 +31,6 @@ import java.util.concurrent.*;
 @RequestMapping("/user/goods")
 @Validated
 public class UserGoodsController {
-//	private final Log logger = LogFactory.getLog(UserGoodsController.class);
 
     @Autowired
 	private EtmallGoodsService goodsService;

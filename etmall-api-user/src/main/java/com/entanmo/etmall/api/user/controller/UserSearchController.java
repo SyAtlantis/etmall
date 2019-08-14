@@ -27,7 +27,6 @@ import java.util.Map;
 @RequestMapping("/user/search")
 @Validated
 public class UserSearchController {
-//    private final Log logger = LogFactory.getLog(UserSearchController.class);
 
     @Autowired
     private EtmallKeywordService keywordsService;

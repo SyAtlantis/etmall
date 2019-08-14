@@ -21,7 +21,6 @@ import java.util.Map;
 @RequestMapping("/user/user")
 @Validated
 public class UserUserController {
-//    private final Log logger = LogFactory.getLog(UserUserController.class);
 
     @Autowired
     private OrderService orderService;

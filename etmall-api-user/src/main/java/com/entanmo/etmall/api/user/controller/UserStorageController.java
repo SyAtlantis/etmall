@@ -25,7 +25,6 @@ import java.io.IOException;
 @RequestMapping("/user/storage")
 @Validated
 public class UserStorageController {
-//    private final Log logger = LogFactory.getLog(UserStorageController.class);
 
     @Autowired
     private StorageService storageService;

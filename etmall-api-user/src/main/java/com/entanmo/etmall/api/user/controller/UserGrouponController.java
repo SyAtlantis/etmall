@@ -41,7 +41,6 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.ORDER_UNKNOWN;
 @RequestMapping("/user/groupon")
 @Validated
 public class UserGrouponController {
-//    private final Log logger = LogFactory.getLog(UserGrouponController.class);
 
     @Autowired
     private EtmallGrouponRulesService rulesService;

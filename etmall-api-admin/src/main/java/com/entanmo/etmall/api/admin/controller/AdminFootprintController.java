@@ -6,6 +6,7 @@ import com.entanmo.etmall.core.validator.Order;
 import com.entanmo.etmall.core.validator.Sort;
 import com.entanmo.etmall.db.domain.EtmallFootprint;
 import com.entanmo.etmall.db.service.EtmallFootprintService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class AdminFootprintController {
     @Autowired
     private EtmallFootprintService footprintService;
 
+    @RequiresPermissions("admin:footprint:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "用户足迹"}, button = "查询")
     @GetMapping("/list")
     public Object list(String userId, String goodsId,

@@ -65,7 +65,8 @@ public class AdminAuthController {
 
         Subject currentUser = SecurityUtils.getSubject();
         try {
-            currentUser.login(new UsernamePasswordToken(username, password));
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            currentUser.login(token);
         } catch (UnknownAccountException uae) {
             logHelper.logAuthFail("登录", "用户帐号或密码不正确");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
@@ -77,7 +78,7 @@ public class AdminAuthController {
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "认证失败");
         }
 
-        currentUser = SecurityUtils.getSubject();
+//        currentUser = SecurityUtils.getSubject();
         EtmallAdmin admin = (EtmallAdmin) currentUser.getPrincipal();
         admin.setLastLoginIp(IpUtil.getIpAddr(request));
         admin.setLastLoginTime(LocalDateTime.now());
@@ -96,9 +97,6 @@ public class AdminAuthController {
         return ResponseUtil.ok(result);
     }
 
-    /*
-     *
-     */
     @RequiresAuthentication
     @PostMapping("/logout")
     public Object logout() {

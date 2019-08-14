@@ -28,7 +28,6 @@ import java.util.Map;
 @RequestMapping("/user/comment")
 @Validated
 public class UserCommentController {
-//    private final Log logger = LogFactory.getLog(UserCommentController.class);
 
     @Autowired
     private EtmallCommentService commentService;

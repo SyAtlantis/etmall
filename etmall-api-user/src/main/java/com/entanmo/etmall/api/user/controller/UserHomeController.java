@@ -31,8 +31,6 @@ import java.util.concurrent.*;
 @Validated
 public class UserHomeController {
 
-//    private final Log logger = LogFactory.getLog(UserHomeController.class);
-
     @Autowired
     private EtmallAdService adService;
 

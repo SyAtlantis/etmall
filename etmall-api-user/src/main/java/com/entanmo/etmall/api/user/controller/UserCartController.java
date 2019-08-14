@@ -30,7 +30,6 @@ import static com.entanmo.etmall.db.constant.UserResponseConstant.GOODS_UNSHELVE
 @RequestMapping("/user/cart")
 @Validated
 public class UserCartController {
-//    private final Log logger = LogFactory.getLog(UserCartController.class);
 
     @Autowired
     private EtmallCartService cartService;

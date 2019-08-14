@@ -36,7 +36,6 @@ import java.util.List;
 @RequestMapping("/user/coupon")
 @Validated
 public class UserCouponController {
-//    private final Log logger = LogFactory.getLog(UserCouponController.class);
 
     @Autowired
     private EtmallCouponService couponService;

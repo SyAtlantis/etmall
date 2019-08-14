@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user/feedback")
 @Validated
 public class UserFeedbackController {
-//    private final Log logger = LogFactory.getLog(UserFeedbackController.class);
 
     @Autowired
     private EtmallFeedbackService feedbackService;

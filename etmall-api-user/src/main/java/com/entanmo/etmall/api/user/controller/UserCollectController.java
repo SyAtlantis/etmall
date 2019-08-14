@@ -29,7 +29,6 @@ import java.util.Map;
 @RequestMapping("/user/collect")
 @Validated
 public class UserCollectController {
-//    private final Log logger = LogFactory.getLog(UserCollectController.class);
 
     @Autowired
     private EtmallCollectService collectService;

@@ -29,7 +29,6 @@ import java.util.Map;
 @RequestMapping("/user/topic")
 @Validated
 public class UserTopicController {
-//    private final Log logger = LogFactory.getLog(UserTopicController.class);
 
     @Autowired
     private EtmallTopicService topicService;
