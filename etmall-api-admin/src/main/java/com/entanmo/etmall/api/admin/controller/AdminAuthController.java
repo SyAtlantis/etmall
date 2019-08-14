@@ -72,7 +72,6 @@ public class AdminAuthController {
         } catch (LockedAccountException lae) {
             logHelper.logAuthFail("登录", "用户帐号已锁定不可用");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
-
         } catch (AuthenticationException ae) {
             logHelper.logAuthFail("登录", "认证失败");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "认证失败");
@@ -134,7 +133,7 @@ public class AdminAuthController {
     private Collection<String> toApi(Set<String> permissions) {
         if (systemPermissionsMap == null) {
             systemPermissionsMap = new HashMap<>();
-            final String basicPackage = "org.linlinjava.Etmall.admin";
+            final String basicPackage = "com.entanmo.etmall.api.admin";
             List<Permission> systemPermissions = PermissionUtil.listPermission(context, basicPackage);
             for (Permission permission : systemPermissions) {
                 String perm = permission.getRequiresPermissions().value()[0];

@@ -29,11 +29,19 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+         /*
+          * anon:无需登录认证
+          * authc：必须认证才可以访问
+          * user:如果使用rememberMe的功能可以直接访问
+          * prems:该资源必须得到资源权限才能访问
+          * role:该资源必须得到角色权限才可以访问
+          */
         filterChainDefinitionMap.put("/admin/auth/login", "anon");
         filterChainDefinitionMap.put("/admin/auth/401", "anon");
         filterChainDefinitionMap.put("/admin/auth/index", "anon");
         filterChainDefinitionMap.put("/admin/auth/403", "anon");
-        filterChainDefinitionMap.put("/admin/index/index", "anon");
+//        filterChainDefinitionMap.put("/admin/index/index", "anon");
+//        filterChainDefinitionMap.put("/admin/auth/info", "anon");
 
         filterChainDefinitionMap.put("/admin/**", "authc");
         shiroFilterFactoryBean.setLoginUrl("/admin/auth/401");
@@ -45,7 +53,6 @@ public class ShiroConfig {
 
     @Bean
     public SessionManager sessionManager() {
-
         return new AdminWebSessionManager();
     }
 

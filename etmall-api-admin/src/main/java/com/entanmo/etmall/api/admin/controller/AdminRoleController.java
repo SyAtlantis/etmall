@@ -149,7 +149,7 @@ public class AdminRoleController {
     private Set<String> systemPermissionsString = null;
 
     private List<PermVo> getSystemPermissions() {
-        final String basicPackage = "org.linlinjava.Etmall.admin";
+        final String basicPackage = "com.entanmo.etmall.api.admin";
         if (systemPermissions == null) {
             List<Permission> permissions = PermissionUtil.listPermission(context, basicPackage);
             systemPermissions = PermissionUtil.listPermVo(permissions);

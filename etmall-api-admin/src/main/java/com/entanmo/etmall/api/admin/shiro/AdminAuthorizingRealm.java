@@ -1,5 +1,6 @@
 package com.entanmo.etmall.api.admin.shiro;
 
+import com.entanmo.etmall.core.util.bcrypt.BCryptPasswordEncoder;
 import com.entanmo.etmall.db.domain.EtmallAdmin;
 import com.entanmo.etmall.db.service.EtmallAdminService;
 import com.entanmo.etmall.db.service.EtmallPermissionService;
@@ -26,6 +27,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private EtmallPermissionService permissionService;
 
+    // 获取授权信息
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         if (principals == null) {
@@ -42,6 +44,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
         return info;
     }
 
+    // 获取认证信息
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
@@ -63,10 +66,10 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
         }
         EtmallAdmin admin = adminList.get(0);
 
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        if (!encoder.matches(password, admin.getPassword())) {
-//            throw new UnknownAccountException("找不到用户（" + username + "）的帐号信息");
-//        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (!encoder.matches(password, admin.getPassword())) {
+            throw new UnknownAccountException("找不到用户（" + username + "）的帐号信息");
+        }
 
         return new SimpleAuthenticationInfo(admin, password, getName());
     }
