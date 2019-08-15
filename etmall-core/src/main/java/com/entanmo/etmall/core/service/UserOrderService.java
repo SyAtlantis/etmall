@@ -504,7 +504,7 @@ public class UserOrderService {
         }
 
         EtmallUser user = userService.findById(userId);
-        String openid = user.getWeixinOpenid();
+        String openid = user.getOpenid();
         if (openid == null) {
             return ResponseUtil.fail(AUTH_OPENID_UNACCESS, "订单不能支付");
         }
@@ -527,7 +527,7 @@ public class UserOrderService {
             String prepayId = result.getPackageValue();
             prepayId = prepayId.replace("prepay_id=", "");
             EtmallUserFormid userFormid = new EtmallUserFormid();
-            userFormid.setOpenid(user.getWeixinOpenid());
+            userFormid.setOpenid(user.getOpenid());
             userFormid.setFormid(prepayId);
             userFormid.setIsprepay(true);
             userFormid.setUseamount(3);

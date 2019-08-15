@@ -777,4 +777,19 @@ CREATE TABLE `etmall_user_formid` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP TABLE IF EXISTS `etmall_draw`;
+CREATE TABLE `etmall_draw` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `userId` int(11) NOT NULL,
+    `secret` varchar(128) NOT NULL,
+    `amount` varchar(64) DEFAULT NULL,
+    `address` varchar(128) NOT NULL,
+    `transactionId1` varchar(128) DEFAULT NULL,
+    `transactionId2` varchar(128) DEFAULT NULL,
+    `transactionId3` varchar(128) DEFAULT NULL,
+    `add_time` datetime DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+
+
 -- Dump completed on 2018-12-10 16:59:09

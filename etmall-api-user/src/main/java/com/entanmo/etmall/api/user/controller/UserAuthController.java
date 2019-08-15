@@ -3,6 +3,7 @@ package com.entanmo.etmall.api.user.controller;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import com.alibaba.fastjson.JSON;
 import com.entanmo.etmall.api.user.annotation.LoginUser;
 import com.entanmo.etmall.core.dto.NotifyType;
 import com.entanmo.etmall.core.service.CaptchaCodeService;
@@ -133,7 +134,7 @@ public class UserAuthController {
             user = new EtmallUser();
             user.setUsername(openId);
             user.setPassword(openId);
-            user.setWeixinOpenid(openId);
+            user.setOpenid(openId);
             user.setAvatar(userInfo.getAvatarUrl());
             user.setNickname(userInfo.getNickName());
             user.setGender(userInfo.getGender());
@@ -165,10 +166,86 @@ public class UserAuthController {
         return ResponseUtil.ok(result);
     }
 
+    /**
+     * 第三方登录
+     */
+    @RequestMapping("vlogin")
+    public Object vlogin(String code, HttpServletRequest request) {
+        if (code == null) {
+            return ResponseUtil.badArgument();
+        }
+
+        /*获得授权码，换取access_token*/
+        String URL1 = "https://ssgw.updrips.com/oauth2/accessToken";
+        String APPID = "qBSdYLZEuaTMssbI";
+        String APPSECRET = "ltKX4HGMUdPIHVQI";
+        String GRANT_TYPE = "authorization_code";
+        Map<String, String> params1 = new HashMap<String, String>();
+        params1.put("appid", APPID);
+        params1.put("appsecret", APPSECRET);
+        params1.put("grant_type", GRANT_TYPE);
+        params1.put("code", code);
+        String access_token_json = HttpUtil.sendPost(URL1, params1);
+
+        Map<String, Object> access_map = JSON.parseObject(access_token_json, Map.class);
+        String ACCESS_TOKEN = (String) access_map.get("access_token");
+
+        /*access_token换取用户信息*/
+        String URL2 = "https://ssgw.updrips.com/resource/user/getUserInfo";
+        Map<String, String> params2 = new HashMap<String, String>();
+        params1.put("access_token", ACCESS_TOKEN);
+        String user_json = HttpUtil.sendPost(URL2, params2);
+
+        Map<String, Object> user_map = JSON.parseObject(user_json, Map.class);
+
+        EtmallUser user = null;
+        if (user_map != null) {
+            String openId = (String) user_map.get("openId");
+            String nickName = (String) user_map.get("nickName");
+            String originalAvatar = (String) user_map.get("originalAvatar");
+            String smallAvatar = (String) user_map.get("smallAvatar");
+            Byte gender = (Byte) user_map.get("gender");
+
+            user = userService.queryByOid(openId);
+            if (user == null) {
+                user = new EtmallUser();
+                user.setUsername(openId);
+                user.setPassword(openId);
+                user.setOpenid(openId);
+                user.setAvatar(originalAvatar);
+                user.setNickname(nickName);
+                user.setGender(gender);
+
+                user.setUserLevel((byte) 0);
+                user.setStatus((byte) 0);
+                user.setLoginType((byte) 1);
+                user.setLastLoginTime(LocalDateTime.now());
+                user.setLastLoginIp(IpUtil.getIpAddr(request));
+
+                userService.add(user);
+                // 新用户发送注册优惠券
+                couponAssignService.assignForRegister(user.getId());
+            } else {
+                user.setLastLoginTime(LocalDateTime.now());
+                user.setLastLoginIp(IpUtil.getIpAddr(request));
+                if (userService.updateById(user) == 0) {
+                    return ResponseUtil.updatedDataFailed();
+                }
+            }
+        }
+
+        // token
+        String token = UserTokenService.generateToken(user.getId());
+
+        Map<Object, Object> result = new HashMap<Object, Object>();
+        result.put("token", token);
+        result.put("userInfo", user);
+        return ResponseUtil.ok(result);
+    }
 
     /**
      * 请求注册验证码
-     *
+     * <p>
      * TODO
      * 这里需要一定机制防止短信验证码被滥用
      *
@@ -284,7 +361,7 @@ public class UserAuthController {
         user.setUsername(username);
         user.setPassword(encodedPassword);
         user.setMobile(mobile);
-        user.setWeixinOpenid(openId);
+        user.setOpenid(openId);
         user.setAvatar("https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64");
         user.setNickname(username);
         user.setGender((byte) 0);
@@ -311,10 +388,9 @@ public class UserAuthController {
         return ResponseUtil.ok(result);
     }
 
-
     /**
      * 请求验证码
-     *
+     * <p>
      * TODO
      * 这里需要一定机制防止短信验证码被滥用
      *
@@ -323,7 +399,7 @@ public class UserAuthController {
      */
     @PostMapping("captcha")
     public Object captcha(@LoginUser Integer userId, @RequestBody String body) {
-        if(userId == null){
+        if (userId == null) {
             return ResponseUtil.unlogin();
         }
         String phoneNumber = JacksonUtil.parseString(body, "mobile");
@@ -422,7 +498,7 @@ public class UserAuthController {
      */
     @PostMapping("resetPhone")
     public Object resetPhone(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
-        if(userId == null){
+        if (userId == null) {
             return ResponseUtil.unlogin();
         }
         String password = JacksonUtil.parseString(body, "password");
@@ -475,7 +551,7 @@ public class UserAuthController {
      */
     @PostMapping("profile")
     public Object profile(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
-        if(userId == null){
+        if (userId == null) {
             return ResponseUtil.unlogin();
         }
         String avatar = JacksonUtil.parseString(body, "avatar");
@@ -483,13 +559,13 @@ public class UserAuthController {
         String nickname = JacksonUtil.parseString(body, "nickname");
 
         EtmallUser user = userService.findById(userId);
-        if(!StringUtils.isEmpty(avatar)){
+        if (!StringUtils.isEmpty(avatar)) {
             user.setAvatar(avatar);
         }
-        if(gender != null){
+        if (gender != null) {
             user.setGender(gender);
         }
-        if(!StringUtils.isEmpty(nickname)){
+        if (!StringUtils.isEmpty(nickname)) {
             user.setNickname(nickname);
         }
 

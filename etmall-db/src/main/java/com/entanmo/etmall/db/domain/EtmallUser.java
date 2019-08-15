@@ -32,7 +32,7 @@ public class EtmallUser {
 
     private String avatar;
 
-    private String weixinOpenid;
+    private String openid;
 
     private String sessionKey;
 
@@ -43,6 +43,8 @@ public class EtmallUser {
     private LocalDateTime updateTime;
 
     private Boolean deleted;
+
+    private Byte loginType;
 
     public Integer getId() {
         return id;
@@ -132,12 +134,12 @@ public class EtmallUser {
         this.avatar = avatar;
     }
 
-    public String getWeixinOpenid() {
-        return weixinOpenid;
+    public String getOpenid() {
+        return openid;
     }
 
-    public void setWeixinOpenid(String weixinOpenid) {
-        this.weixinOpenid = weixinOpenid;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
     public String getSessionKey() {
@@ -184,6 +186,14 @@ public class EtmallUser {
         this.deleted = deleted;
     }
 
+    public Byte getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(Byte loginType) {
+        this.loginType = loginType;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -203,12 +213,13 @@ public class EtmallUser {
         sb.append(", nickname=").append(nickname);
         sb.append(", mobile=").append(mobile);
         sb.append(", avatar=").append(avatar);
-        sb.append(", weixinOpenid=").append(weixinOpenid);
+        sb.append(", openid=").append(openid);
         sb.append(", sessionKey=").append(sessionKey);
         sb.append(", status=").append(status);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
+        sb.append(", loginType=").append(loginType);
         sb.append("]");
         return sb.toString();
     }
@@ -236,12 +247,13 @@ public class EtmallUser {
             && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
             && (this.getMobile() == null ? other.getMobile() == null : this.getMobile().equals(other.getMobile()))
             && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()))
-            && (this.getWeixinOpenid() == null ? other.getWeixinOpenid() == null : this.getWeixinOpenid().equals(other.getWeixinOpenid()))
+            && (this.getOpenid() == null ? other.getOpenid() == null : this.getOpenid().equals(other.getOpenid()))
             && (this.getSessionKey() == null ? other.getSessionKey() == null : this.getSessionKey().equals(other.getSessionKey()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
+            && (this.getLoginType() == null ? other.getLoginType() == null : this.getLoginType().equals(other.getLoginType()));
     }
 
     @Override
@@ -259,12 +271,13 @@ public class EtmallUser {
         result = prime * result + ((getNickname() == null) ? 0 : getNickname().hashCode());
         result = prime * result + ((getMobile() == null) ? 0 : getMobile().hashCode());
         result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
-        result = prime * result + ((getWeixinOpenid() == null) ? 0 : getWeixinOpenid().hashCode());
+        result = prime * result + ((getOpenid() == null) ? 0 : getOpenid().hashCode());
         result = prime * result + ((getSessionKey() == null) ? 0 : getSessionKey().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
+        result = prime * result + ((getLoginType() == null) ? 0 : getLoginType().hashCode());
         return result;
     }
 
@@ -306,12 +319,13 @@ public class EtmallUser {
         nickname("nickname", "nickname", "VARCHAR", false),
         mobile("mobile", "mobile", "VARCHAR", false),
         avatar("avatar", "avatar", "VARCHAR", false),
-        weixinOpenid("weixin_openid", "weixinOpenid", "VARCHAR", false),
+        openid("openid", "openid", "VARCHAR", false),
         sessionKey("session_key", "sessionKey", "VARCHAR", false),
         status("status", "status", "TINYINT", true),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
-        deleted("deleted", "deleted", "BIT", false);
+        deleted("deleted", "deleted", "BIT", false),
+        loginType("login_type", "loginType", "TINYINT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

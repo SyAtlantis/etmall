@@ -36,7 +36,7 @@ public class UserUserFormId {
 
         EtmallUser user = userService.findById(userId);
         EtmallUserFormid userFormid = new EtmallUserFormid();
-        userFormid.setOpenid(user.getWeixinOpenid());
+        userFormid.setOpenid(user.getOpenid());
         userFormid.setFormid(formId);
         userFormid.setIsprepay(false);
         userFormid.setUseamount(1);

@@ -31,7 +31,7 @@ public class EtmallUserService {
 
     public EtmallUser queryByOid(String openId) {
         EtmallUserExample example = new EtmallUserExample();
-        example.or().andWeixinOpenidEqualTo(openId).andDeletedEqualTo(false);
+        example.or().andOpenidEqualTo(openId).andDeletedEqualTo(false);
         return userMapper.selectOneByExample(example);
     }
 
@@ -93,7 +93,7 @@ public class EtmallUserService {
 
     public List<EtmallUser> queryByOpenid(String openid) {
         EtmallUserExample example = new EtmallUserExample();
-        example.or().andWeixinOpenidEqualTo(openid).andDeletedEqualTo(false);
+        example.or().andOpenidEqualTo(openid).andDeletedEqualTo(false);
         return userMapper.selectByExample(example);
     }
 

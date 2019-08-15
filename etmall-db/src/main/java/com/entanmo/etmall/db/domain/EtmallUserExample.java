@@ -1194,103 +1194,103 @@ public class EtmallUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidIsNull() {
-            addCriterion("weixin_openid is null");
+        public Criteria andOpenidIsNull() {
+            addCriterion("openid is null");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidIsNotNull() {
-            addCriterion("weixin_openid is not null");
+        public Criteria andOpenidIsNotNull() {
+            addCriterion("openid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidEqualTo(String value) {
-            addCriterion("weixin_openid =", value, "weixinOpenid");
+        public Criteria andOpenidEqualTo(String value) {
+            addCriterion("openid =", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidNotEqualTo(String value) {
-            addCriterion("weixin_openid <>", value, "weixinOpenid");
+        public Criteria andOpenidNotEqualTo(String value) {
+            addCriterion("openid <>", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidNotEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidNotEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidGreaterThan(String value) {
-            addCriterion("weixin_openid >", value, "weixinOpenid");
+        public Criteria andOpenidGreaterThan(String value) {
+            addCriterion("openid >", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidGreaterThanColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidGreaterThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidGreaterThanOrEqualTo(String value) {
-            addCriterion("weixin_openid >=", value, "weixinOpenid");
+        public Criteria andOpenidGreaterThanOrEqualTo(String value) {
+            addCriterion("openid >=", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidGreaterThanOrEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidGreaterThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidLessThan(String value) {
-            addCriterion("weixin_openid <", value, "weixinOpenid");
+        public Criteria andOpenidLessThan(String value) {
+            addCriterion("openid <", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidLessThanColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidLessThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidLessThanOrEqualTo(String value) {
-            addCriterion("weixin_openid <=", value, "weixinOpenid");
+        public Criteria andOpenidLessThanOrEqualTo(String value) {
+            addCriterion("openid <=", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidLessThanOrEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("weixin_openid <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andOpenidLessThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("openid <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidLike(String value) {
-            addCriterion("weixin_openid like", value, "weixinOpenid");
+        public Criteria andOpenidLike(String value) {
+            addCriterion("openid like", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidNotLike(String value) {
-            addCriterion("weixin_openid not like", value, "weixinOpenid");
+        public Criteria andOpenidNotLike(String value) {
+            addCriterion("openid not like", value, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidIn(List<String> values) {
-            addCriterion("weixin_openid in", values, "weixinOpenid");
+        public Criteria andOpenidIn(List<String> values) {
+            addCriterion("openid in", values, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidNotIn(List<String> values) {
-            addCriterion("weixin_openid not in", values, "weixinOpenid");
+        public Criteria andOpenidNotIn(List<String> values) {
+            addCriterion("openid not in", values, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidBetween(String value1, String value2) {
-            addCriterion("weixin_openid between", value1, value2, "weixinOpenid");
+        public Criteria andOpenidBetween(String value1, String value2) {
+            addCriterion("openid between", value1, value2, "openid");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinOpenidNotBetween(String value1, String value2) {
-            addCriterion("weixin_openid not between", value1, value2, "weixinOpenid");
+        public Criteria andOpenidNotBetween(String value1, String value2) {
+            addCriterion("openid not between", value1, value2, "openid");
             return (Criteria) this;
         }
 
@@ -1751,6 +1751,96 @@ public class EtmallUserExample {
 
         public Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
             addCriterion("deleted not between", value1, value2, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeIsNull() {
+            addCriterion("login_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeIsNotNull() {
+            addCriterion("login_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeEqualTo(Byte value) {
+            addCriterion("login_type =", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotEqualTo(Byte value) {
+            addCriterion("login_type <>", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThan(Byte value) {
+            addCriterion("login_type >", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanOrEqualTo(Byte value) {
+            addCriterion("login_type >=", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThan(Byte value) {
+            addCriterion("login_type <", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanOrEqualTo(Byte value) {
+            addCriterion("login_type <=", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeIn(List<Byte> values) {
+            addCriterion("login_type in", values, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotIn(List<Byte> values) {
+            addCriterion("login_type not in", values, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeBetween(Byte value1, Byte value2) {
+            addCriterion("login_type between", value1, value2, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotBetween(Byte value1, Byte value2) {
+            addCriterion("login_type not between", value1, value2, "loginType");
             return (Criteria) this;
         }
     }
