@@ -167,9 +167,9 @@ public class UserAuthController {
     }
 
     /**
-     * 第三方登录
+     * 闲聊登录
      */
-    @RequestMapping("vlogin")
+    @RequestMapping("login_by_xiaoliao")
     public Object vlogin(String code, HttpServletRequest request) {
         if (code == null) {
             return ResponseUtil.badArgument();
@@ -193,7 +193,7 @@ public class UserAuthController {
         /*access_token换取用户信息*/
         String URL2 = "https://ssgw.updrips.com/resource/user/getUserInfo";
         Map<String, String> params2 = new HashMap<String, String>();
-        params1.put("access_token", ACCESS_TOKEN);
+        params2.put("access_token", ACCESS_TOKEN);
         String user_json = HttpUtil.sendPost(URL2, params2);
 
         Map<String, Object> user_map = JSON.parseObject(user_json, Map.class);
@@ -205,6 +205,92 @@ public class UserAuthController {
             String originalAvatar = (String) user_map.get("originalAvatar");
             String smallAvatar = (String) user_map.get("smallAvatar");
             Byte gender = (Byte) user_map.get("gender");
+
+            user = userService.queryByOid(openId);
+            if (user == null) {
+                user = new EtmallUser();
+                user.setUsername(openId);
+                user.setPassword(openId);
+                user.setOpenid(openId);
+                user.setAvatar(originalAvatar);
+                user.setNickname(nickName);
+                user.setGender(gender);
+
+                user.setUserLevel((byte) 0);
+                user.setStatus((byte) 0);
+                user.setLoginType((byte) 1);
+                user.setLastLoginTime(LocalDateTime.now());
+                user.setLastLoginIp(IpUtil.getIpAddr(request));
+
+                userService.add(user);
+                // 新用户发送注册优惠券
+                couponAssignService.assignForRegister(user.getId());
+            } else {
+                user.setLastLoginTime(LocalDateTime.now());
+                user.setLastLoginIp(IpUtil.getIpAddr(request));
+                if (userService.updateById(user) == 0) {
+                    return ResponseUtil.updatedDataFailed();
+                }
+            }
+        }
+
+        // token
+        String token = UserTokenService.generateToken(user.getId());
+
+        Map<Object, Object> result = new HashMap<Object, Object>();
+        result.put("token", token);
+        result.put("userInfo", user);
+        return ResponseUtil.ok(result);
+    }
+
+    /**
+     * 微博登录
+     */
+    @RequestMapping("login_by_weibo")
+    public Object loginByWeibo(String code, HttpServletRequest request) {
+        if (code == null) {
+            return ResponseUtil.badArgument();
+        }
+
+        String URL1 = "https://api.weibo.com/oauth2/access_token";
+        String APPID = "3350462784";
+        String APPSECRET = "8db0122cb12ea80c23f79e7e3c4bf5d0";
+        String GRANT_TYPE = "authorization_code";
+        Map<String, String> params1 = new HashMap<String, String>();
+        params1.put("client_id", APPID);
+        params1.put("client_secret", APPSECRET);
+        params1.put("grant_type", GRANT_TYPE);
+        params1.put("redirect_uri", "http://192.168.2.73:9000/user/auth/login_by_xiaoliao");
+        params1.put("code", code);
+        String access_token_json = HttpUtil.sendPost(URL1, params1);
+
+        if (access_token_json.isEmpty()) {
+            return ResponseUtil.fail(AUTH_INVALID_ACCOUNT, "授权失败");
+        }
+        Map<String, Object> access_map = JSON.parseObject(access_token_json, Map.class);
+        String ACCESS_TOKEN = (String) access_map.get("access_token");
+        String UID = (String) access_map.get("uid");
+
+        /*access_token换取用户信息*/
+        String URL2 = "https://api.weibo.com/2/users/show.json";
+//        Map<String, String> params2 = new HashMap<String, String>();
+//        params2.put("access_token", ACCESS_TOKEN);
+//        params2.put("uid",UID);
+        String params2 = "access_token=" + ACCESS_TOKEN + "&uid=" + UID;
+        String user_json = HttpUtil.sendGet(URL2, params2);
+
+        if (user_json.isEmpty()) {
+            return ResponseUtil.fail(AUTH_INVALID_ACCOUNT, "授权失败");
+        }
+        Map<String, Object> user_map = JSON.parseObject(user_json, Map.class);
+
+        EtmallUser user = null;
+        if (user_map != null) {
+            String openId = (String) user_map.get("idstr");
+            String nickName = (String) user_map.get("name");
+            String originalAvatar = (String) user_map.get("profile_image_url");
+            String user_gender = (String) user_map.get("gender");
+            Byte gender = user_gender.equals("m") ? (byte) 1 : (byte) 0;
 
             user = userService.queryByOid(openId);
             if (user == null) {
