@@ -16,10 +16,10 @@
     <result column="openid" jdbcType="VARCHAR" property="openid" />
     <result column="session_key" jdbcType="VARCHAR" property="sessionKey" />
     <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="login_type" jdbcType="TINYINT" property="loginType" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
-    <result column="login_type" jdbcType="TINYINT" property="loginType" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -81,8 +81,8 @@
   </sql>
   <sql id="Base_Column_List">
     id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
-    nickname, mobile, avatar, openid, session_key, `status`, add_time, update_time, deleted, 
-    login_type
+    nickname, mobile, avatar, openid, session_key, `status`, login_type, add_time, update_time, 
+    deleted
   </sql>
   <select id="selectByExample" parameterType="com.entanmo.etmall.db.domain.EtmallUserExample" resultMap="BaseResultMap">
     select
@@ -175,14 +175,14 @@
       birthday, last_login_time, last_login_ip, 
       user_level, nickname, mobile, 
       avatar, openid, session_key, 
-      `status`, add_time, update_time, 
-      deleted, login_type)
+      `status`, login_type, add_time, 
+      update_time, deleted)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
       #{birthday,jdbcType=DATE}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, 
       #{userLevel,jdbcType=TINYINT}, #{nickname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT}, #{loginType,jdbcType=TINYINT})
+      #{status,jdbcType=TINYINT}, #{loginType,jdbcType=TINYINT}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.entanmo.etmall.db.domain.EtmallUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -229,6 +229,9 @@
       <if test="status != null">
         `status`,
       </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
       <if test="addTime != null">
         add_time,
       </if>
@@ -237,9 +240,6 @@
       </if>
       <if test="deleted != null">
         deleted,
-      </if>
-      <if test="loginType != null">
-        login_type,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -282,6 +282,9 @@
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
+      <if test="loginType != null">
+        #{loginType,jdbcType=TINYINT},
+      </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
       </if>
@@ -290,9 +293,6 @@
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
-      </if>
-      <if test="loginType != null">
-        #{loginType,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -347,6 +347,9 @@
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=TINYINT},
       </if>
+      <if test="record.loginType != null">
+        login_type = #{record.loginType,jdbcType=TINYINT},
+      </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
       </if>
@@ -355,9 +358,6 @@
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
-      </if>
-      <if test="record.loginType != null">
-        login_type = #{record.loginType,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -380,10 +380,10 @@
       openid = #{record.openid,jdbcType=VARCHAR},
       session_key = #{record.sessionKey,jdbcType=VARCHAR},
       `status` = #{record.status,jdbcType=TINYINT},
+      login_type = #{record.loginType,jdbcType=TINYINT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      deleted = #{record.deleted,jdbcType=BIT},
-      login_type = #{record.loginType,jdbcType=TINYINT}
+      deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -430,6 +430,9 @@
       <if test="status != null">
         `status` = #{status,jdbcType=TINYINT},
       </if>
+      <if test="loginType != null">
+        login_type = #{loginType,jdbcType=TINYINT},
+      </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
@@ -438,9 +441,6 @@
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
-      </if>
-      <if test="loginType != null">
-        login_type = #{loginType,jdbcType=TINYINT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -460,10 +460,10 @@
       openid = #{openid,jdbcType=VARCHAR},
       session_key = #{sessionKey,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=TINYINT},
+      login_type = #{loginType,jdbcType=TINYINT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=BIT},
-      login_type = #{loginType,jdbcType=TINYINT}
+      deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.entanmo.etmall.db.domain.EtmallUserExample" resultMap="BaseResultMap">

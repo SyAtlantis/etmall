@@ -309,7 +309,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `etmall_user` WRITE;
 /*!40000 ALTER TABLE `etmall_user` DISABLE KEYS */;
-INSERT INTO `etmall_user` VALUES (1,'user123','$2a$10$lTu9qi0hr19OC800Db.eludFr0AXuJUSrMHi/iPYhKRlPFeqJxlye',1,NULL,'2019-04-20 22:17:43','0:0:0:0:0:0:0:1',0,'user123','','','','',0,'2019-04-20 22:17:43','2019-04-20 22:17:43',0);
+INSERT INTO `etmall_user` VALUES (1,'user123','$2a$10$lTu9qi0hr19OC800Db.eludFr0AXuJUSrMHi/iPYhKRlPFeqJxlye',1,NULL,'2019-04-20 22:17:43','0:0:0:0:0:0:0:1',0,'user123','','','','',0,0,'2019-04-20 22:17:43','2019-04-20 22:17:43',0);
 /*!40000 ALTER TABLE `etmall_user` ENABLE KEYS */;
 UNLOCK TABLES;
 

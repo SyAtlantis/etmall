@@ -22,6 +22,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -244,14 +246,30 @@ public class UserAuthController {
     }
 
     /**
+     * 微博授权
+     */
+    @RequestMapping("auth_by_weibo")
+    public Object authByWeibo(HttpServletRequest request) {
+        String URL = "https://api.weibo.com/oauth2/authorize";
+        String APPID = "3350462784";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("client_id", APPID);
+        params.put("redirect_uri", "http://192.168.2.73:9000/user/auth/login_by_weibo");
+        params.put("client_secret", "code");
+        String html = HttpUtil.sendPost(URL, params);
+
+        return ResponseUtil.ok(html);
+    }
+
+    /**
      * 微博登录
      */
     @RequestMapping("login_by_weibo")
-    public Object loginByWeibo(String code, HttpServletRequest request) {
+    public Object loginByWeibo(String code, HttpServletRequest request, HttpServletResponse response)throws IOException {
         if (code == null) {
             return ResponseUtil.badArgument();
         }
-
+        String CODE = code;
         String URL1 = "https://api.weibo.com/oauth2/access_token";
         String APPID = "3350462784";
         String APPSECRET = "8db0122cb12ea80c23f79e7e3c4bf5d0";
@@ -260,8 +278,8 @@ public class UserAuthController {
         params1.put("client_id", APPID);
         params1.put("client_secret", APPSECRET);
         params1.put("grant_type", GRANT_TYPE);
-        params1.put("redirect_uri", "http://192.168.2.73:9000/user/auth/login_by_xiaoliao");
-        params1.put("code", code);
+        params1.put("redirect_uri", "http://192.168.2.72:9000/user/auth/login_by_weibo");
+        params1.put("code", CODE);
         String access_token_json = HttpUtil.sendPost(URL1, params1);
 
         if (access_token_json.isEmpty()) {
@@ -304,7 +322,7 @@ public class UserAuthController {
 
                 user.setUserLevel((byte) 0);
                 user.setStatus((byte) 0);
-                user.setLoginType((byte) 1);
+//                user.setLoginType((byte) 1);
                 user.setLastLoginTime(LocalDateTime.now());
                 user.setLastLoginIp(IpUtil.getIpAddr(request));
 
@@ -327,6 +345,9 @@ public class UserAuthController {
         result.put("token", token);
         result.put("userInfo", user);
         return ResponseUtil.ok(result);
+//        response.sendRedirect("http://localhost:9200/index");
+
+//        return "forward:http://localhost:9200/user/auth/info";
     }
 
     /**
@@ -699,7 +720,11 @@ public class UserAuthController {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
-
+//        String token = UserTokenService.generateToken(user.getId());
+//
+//        Map<Object, Object> result = new HashMap<Object, Object>();
+//        result.put("token", token);
+//        result.put("userInfo", user);
         EtmallUser user = userService.findById(userId);
         Map<Object, Object> data = new HashMap<Object, Object>();
         data.put("nickName", user.getNickname());

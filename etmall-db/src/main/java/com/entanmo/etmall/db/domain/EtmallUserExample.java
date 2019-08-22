@@ -1484,6 +1484,96 @@ public class EtmallUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andLoginTypeIsNull() {
+            addCriterion("login_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeIsNotNull() {
+            addCriterion("login_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeEqualTo(Byte value) {
+            addCriterion("login_type =", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotEqualTo(Byte value) {
+            addCriterion("login_type <>", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThan(Byte value) {
+            addCriterion("login_type >", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanOrEqualTo(Byte value) {
+            addCriterion("login_type >=", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeGreaterThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThan(Byte value) {
+            addCriterion("login_type <", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanOrEqualTo(Byte value) {
+            addCriterion("login_type <=", value, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeLessThanOrEqualToColumn(EtmallUser.Column column) {
+            addCriterion(new StringBuilder("login_type <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeIn(List<Byte> values) {
+            addCriterion("login_type in", values, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotIn(List<Byte> values) {
+            addCriterion("login_type not in", values, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeBetween(Byte value1, Byte value2) {
+            addCriterion("login_type between", value1, value2, "loginType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginTypeNotBetween(Byte value1, Byte value2) {
+            addCriterion("login_type not between", value1, value2, "loginType");
+            return (Criteria) this;
+        }
+
         public Criteria andAddTimeIsNull() {
             addCriterion("add_time is null");
             return (Criteria) this;
@@ -1751,96 +1841,6 @@ public class EtmallUserExample {
 
         public Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
             addCriterion("deleted not between", value1, value2, "deleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeIsNull() {
-            addCriterion("login_type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeIsNotNull() {
-            addCriterion("login_type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeEqualTo(Byte value) {
-            addCriterion("login_type =", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type = ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeNotEqualTo(Byte value) {
-            addCriterion("login_type <>", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeNotEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type <> ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeGreaterThan(Byte value) {
-            addCriterion("login_type >", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeGreaterThanColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type > ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeGreaterThanOrEqualTo(Byte value) {
-            addCriterion("login_type >=", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeGreaterThanOrEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type >= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeLessThan(Byte value) {
-            addCriterion("login_type <", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeLessThanColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type < ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeLessThanOrEqualTo(Byte value) {
-            addCriterion("login_type <=", value, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeLessThanOrEqualToColumn(EtmallUser.Column column) {
-            addCriterion(new StringBuilder("login_type <= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeIn(List<Byte> values) {
-            addCriterion("login_type in", values, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeNotIn(List<Byte> values) {
-            addCriterion("login_type not in", values, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeBetween(Byte value1, Byte value2) {
-            addCriterion("login_type between", value1, value2, "loginType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginTypeNotBetween(Byte value1, Byte value2) {
-            addCriterion("login_type not between", value1, value2, "loginType");
             return (Criteria) this;
         }
     }
