@@ -265,7 +265,7 @@ public class UserAuthController {
      * 微博登录
      */
     @RequestMapping("login_by_weibo")
-    public Object loginByWeibo(String code, HttpServletRequest request, HttpServletResponse response)throws IOException {
+    public Object loginByWeibo(String code, HttpServletRequest request) {
         if (code == null) {
             return ResponseUtil.badArgument();
         }
@@ -291,9 +291,6 @@ public class UserAuthController {
 
         /*access_token换取用户信息*/
         String URL2 = "https://api.weibo.com/2/users/show.json";
-//        Map<String, String> params2 = new HashMap<String, String>();
-//        params2.put("access_token", ACCESS_TOKEN);
-//        params2.put("uid",UID);
         String params2 = "access_token=" + ACCESS_TOKEN + "&uid=" + UID;
         String user_json = HttpUtil.sendGet(URL2, params2);
 
@@ -322,7 +319,7 @@ public class UserAuthController {
 
                 user.setUserLevel((byte) 0);
                 user.setStatus((byte) 0);
-//                user.setLoginType((byte) 1);
+                user.setLoginType((byte) 1);
                 user.setLastLoginTime(LocalDateTime.now());
                 user.setLastLoginIp(IpUtil.getIpAddr(request));
 
@@ -345,9 +342,6 @@ public class UserAuthController {
         result.put("token", token);
         result.put("userInfo", user);
         return ResponseUtil.ok(result);
-//        response.sendRedirect("http://localhost:9200/index");
-
-//        return "forward:http://localhost:9200/user/auth/info";
     }
 
     /**
@@ -720,11 +714,7 @@ public class UserAuthController {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
-//        String token = UserTokenService.generateToken(user.getId());
-//
-//        Map<Object, Object> result = new HashMap<Object, Object>();
-//        result.put("token", token);
-//        result.put("userInfo", user);
+
         EtmallUser user = userService.findById(userId);
         Map<Object, Object> data = new HashMap<Object, Object>();
         data.put("nickName", user.getNickname());
