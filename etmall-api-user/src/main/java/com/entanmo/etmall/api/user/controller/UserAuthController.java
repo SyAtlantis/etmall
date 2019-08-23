@@ -169,15 +169,28 @@ public class UserAuthController {
     }
 
     /**
+     * 闲聊授权回调
+     */
+    @RequestMapping("auth_by_xianliao")
+    public void authByXianliao(@RequestParam String code, HttpServletResponse response) throws IOException {
+        if (code == null) {
+            response.sendRedirect("info");
+        }
+
+        response.sendRedirect("http://192.168.2.72:9000/#/login/auth?code=" + code + "&type=3");
+    }
+
+    /**
      * 闲聊登录
      */
     @RequestMapping("login_by_xiaoliao")
-    public Object vlogin(String code, HttpServletRequest request) {
+    public Object vlogin(@RequestBody String code, HttpServletRequest request) {
         if (code == null) {
             return ResponseUtil.badArgument();
         }
 
         /*获得授权码，换取access_token*/
+        String CODE = JacksonUtil.parseString(code, "code");
         String URL1 = "https://ssgw.updrips.com/oauth2/accessToken";
         String APPID = "qBSdYLZEuaTMssbI";
         String APPSECRET = "ltKX4HGMUdPIHVQI";
@@ -186,7 +199,7 @@ public class UserAuthController {
         params1.put("appid", APPID);
         params1.put("appsecret", APPSECRET);
         params1.put("grant_type", GRANT_TYPE);
-        params1.put("code", code);
+        params1.put("code", CODE);
         String access_token_json = HttpUtil.sendPost(URL1, params1);
 
         Map<String, Object> access_map = JSON.parseObject(access_token_json, Map.class);
@@ -246,15 +259,15 @@ public class UserAuthController {
     }
 
     /**
-     * 微博授权
+     * 获取微博授权页
      */
-    @RequestMapping("auth_by_weibo")
-    public Object authByWeibo(HttpServletRequest request) {
+    @RequestMapping("weibo_auth_page")
+    public Object weiboAuthPage(HttpServletRequest request) {
         String URL = "https://api.weibo.com/oauth2/authorize";
         String APPID = "3350462784";
         Map<String, String> params = new HashMap<String, String>();
         params.put("client_id", APPID);
-        params.put("redirect_uri", "http://192.168.2.73:9000/user/auth/login_by_weibo");
+        params.put("redirect_uri", "http://192.168.2.72:9000/user/auth/login_by_weibo");
         params.put("client_secret", "code");
         String html = HttpUtil.sendPost(URL, params);
 
@@ -262,14 +275,26 @@ public class UserAuthController {
     }
 
     /**
+     * 微博授权回调
+     */
+    @RequestMapping("auth_by_weibo")
+    public void authByWeibo(@RequestParam String code, HttpServletResponse response) throws IOException {
+        if (code == null) {
+            return;
+        }
+
+        response.sendRedirect("http://192.168.2.72:9000/#/login/auth?code=" + code + "&type=1");
+    }
+
+    /**
      * 微博登录
      */
-    @RequestMapping("login_by_weibo")
-    public Object loginByWeibo(String code, HttpServletRequest request) {
+    @PostMapping("login_by_weibo")
+    public Object loginByWeibo(@RequestBody String code, HttpServletRequest request) {
         if (code == null) {
             return ResponseUtil.badArgument();
         }
-        String CODE = code;
+        String CODE = JacksonUtil.parseString(code, "code");
         String URL1 = "https://api.weibo.com/oauth2/access_token";
         String APPID = "3350462784";
         String APPSECRET = "8db0122cb12ea80c23f79e7e3c4bf5d0";
@@ -278,7 +303,7 @@ public class UserAuthController {
         params1.put("client_id", APPID);
         params1.put("client_secret", APPSECRET);
         params1.put("grant_type", GRANT_TYPE);
-        params1.put("redirect_uri", "http://192.168.2.72:9000/user/auth/login_by_weibo");
+        params1.put("redirect_uri", "http://192.168.2.72:9000/user/auth/auth_by_weibo");
         params1.put("code", CODE);
         String access_token_json = HttpUtil.sendPost(URL1, params1);
 
@@ -335,12 +360,17 @@ public class UserAuthController {
             }
         }
 
+        UserInfoVo userInfo = new UserInfoVo();
+        userInfo.setAvatarUrl(user.getAvatar());
+        userInfo.setNickName(user.getNickname());
+        userInfo.setGender(user.getGender());
+
         // token
         String token = UserTokenService.generateToken(user.getId());
 
         Map<Object, Object> result = new HashMap<Object, Object>();
         result.put("token", token);
-        result.put("userInfo", user);
+        result.put("userInfo", userInfo);
         return ResponseUtil.ok(result);
     }
 
