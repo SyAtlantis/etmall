@@ -283,7 +283,7 @@ public class UserAuthController {
             return;
         }
 
-        response.sendRedirect("http://192.168.2.72:9000/#/login/auth?code=" + code + "&type=1");
+        response.sendRedirect("http://192.168.2.72:9200/#/login/auth?code=" + code + "&type=1");
     }
 
     /**
